@@ -13,6 +13,17 @@
 		<!--
 			input property info here using database
 		-->
+		<div class="row small-up-2 medium-up-3 large-up-4">
+			<div class="column column-block">
+				<img src="https://placehold.it/600x400" class="thumbnail" alt="">
+				<div style="padding-left: 10px;">
+					<p>content 1</p>
+					<p>content 1</p>
+					<p>content 1</p>
+					<p>content 1</p>
+				</div>
+			</div>
+		</div>
 		<hr>
 			<a href="login/index.php">Log in here</a>
 	</main>
