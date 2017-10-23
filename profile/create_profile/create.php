@@ -1,7 +1,8 @@
 <?php
 	//takes all values entered in the form and inserts the data into the database
 	//if the username is unique.
-	include "../../header2.php";
+    $path = "../../";
+	include $path . "header2.php";
 	$count = 0;
 	$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
 	if(isset($_POST['fname'])){
@@ -37,7 +38,7 @@
 		}
 		if($count != 0){
 			print "username already taken";
-			print "<a href='../../index.php'>Create Profile</a>"
+			print "<a href='../../index.php'>Create Profile</a>";
 		}else{
 			print "Thank you $fname, your profile has been created. <a href='../../index.php'>Log in here</a>";
 			$rows = $db->query("INSERT INTO users(user_id, username, password, membership_type, fname, lname, email) VALUES('$username','$username','$password','$membership_type','$fname','$lname','$email');");
