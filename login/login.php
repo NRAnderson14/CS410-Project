@@ -1,9 +1,10 @@
 <?php
 	session_start();
-	$path = "";
 	$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
 	$username = "";
 	$password = "";
+	$newUser = "";
+	$newPass = "";
 	if(isset($_POST['username']) && isset($_POST['password'])){
 		$username = $_POST['username'];
 		$password = $_POST['password'];
@@ -16,7 +17,7 @@
 			if($username == $newUser && $password == $newPass){
 				$_SESSION["is_auth"] = true;
 				$_SESSION["username"] = $username;
-				header("location: profile.php");
+				header("location: profile/profile.php");
 			}else{
 				print "Username or Password is incorrect";
 			}
@@ -24,8 +25,4 @@
 			print "Not query";
 		}
 	}
-	
-?>
-<?php
-	include 'footer.php';
 ?>
