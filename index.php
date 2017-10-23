@@ -3,7 +3,7 @@
 	include "header.php";
 ?>
 	<main>
-		<p>Can write code here</p>
+		<a href="login/index.php">Log in here</a>
 	</main>
 <?php
 	include "footer.php";
