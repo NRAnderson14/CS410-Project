@@ -1,4 +1,6 @@
 <?php
+	//checks to see if the username and password are the same as what the user entered
+	//then starts session so other pages can be accessed as that user.
 	session_start();
 	$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
 	$username = "";

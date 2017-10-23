@@ -1,6 +1,7 @@
 <?php
 	//checks if logged into system.
 	//if not logged in, the system redirects you to login page.
+	//This code will be at the top of every page that requires authentication.
 	session_start();
 	if(!isset($_SESSION["is_auth"])){
 		header("location: ../index.php");

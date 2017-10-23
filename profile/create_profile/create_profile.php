@@ -1,4 +1,5 @@
 <?php
+	//form for creating an account
 	$path = "../../";
 	include "$path"."header2.php";
 	if(isset($_POST['submit'])){

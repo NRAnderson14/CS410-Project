@@ -1,4 +1,6 @@
 <?php
+	//takes all values entered in the form and inserts the data into the database
+	//if the username is unique.
 	include "../../header2.php";
 	$count = 0;
 	$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
@@ -34,7 +36,6 @@
 			$count++;
 		}
 		if($count != 0){
-			//header("location: create_user.php");
 			print "username already taken";
 			print "<a href='../../index.php'>Create Profile</a>"
 		}else{
