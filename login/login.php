@@ -24,7 +24,7 @@
 				print "Username or Password is incorrect";
 			}
 		}else{
-			print "Not query";
+			print "Not queried";
 		}
 	}
 ?>

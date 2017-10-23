@@ -1,9 +1,10 @@
 <?php
 	include "session.php";
+	$path = "../";
+	include "../header.php";
+	$var = $_SESSION["username"];
 ?>
 <h1>Logged in as:</h1><h3>
 <?php
-	$var = $_SESSION["username"];
-	print $var;
+	print "<p>$var</p>";
 ?></h3>
-<a href="../login/logout.php">Log out</a>
