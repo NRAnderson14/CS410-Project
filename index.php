@@ -24,7 +24,6 @@
 				$email=$row['email'];
 				$phone=$row['phone'];
 				$landlord=$row['landlord'];
-			
 		?>
 			<div class="column column-block">
 				<p><?=$name?></p>
