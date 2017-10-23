@@ -19,7 +19,7 @@
 			if($username == $newUser && $password == $newPass){
 				$_SESSION["is_auth"] = true;
 				$_SESSION["username"] = $username;
-				header("location: profile/profile.php");
+				header("location: ../profile/profile.php");
 			}else{
 				print "Username or Password is incorrect";
 			}

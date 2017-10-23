@@ -1,7 +1,7 @@
 <?php
-	$path = "";
-	include "header2.php";
-	include "login/login.php";
+	$path = "../";
+	include "../header2.php";
+	include "login.php";
 ?>
 	<main class="login">
 		<div class="row">
@@ -27,11 +27,11 @@
 		<div class="row">
 			<div class="small-10 medium-6 large-4 small-centered medium-centered large-centered columns">
 				<p><input type="submit" class="button expanded" value="Log in"></input></p>
-				<p class="text-center"><a href="profile/create_profile/create_profile.php">Don't have an account?</a></p>
+				<p class="text-center"><a href="../profile/create_profile/create_profile.php">Don't have an account?</a></p>
 			</div>
 		</div>
 		</form>
 	</main>
 <?php
-	include 'footer.php';
+	include '../footer.php';
 ?>

@@ -38,7 +38,7 @@
 		}
 		if($count != 0){
 			print "username already taken";
-			print "<a href='../../index.php'>Create Profile</a>";
+			print "<a href='../../login/index.php'>Create Profile</a>";
 		}else{
 			print "Thank you $fname, your profile has been created. <a href='../../index.php'>Log in here</a>";
 			$rows = $db->query("INSERT INTO users(user_id, username, password, membership_type, fname, lname, email) VALUES('$username','$username','$password','$membership_type','$fname','$lname','$email');");
