@@ -33,3 +33,6 @@
 .searchButton:active {
 	background: #1779BA;
 }
+#title {
+	color: #1779BA;
+}
