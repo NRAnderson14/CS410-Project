@@ -3,6 +3,7 @@
 	if(isset($_POST['search'])){
 		$search = $_POST['search'];
 	}
+	$rows = $db->query("SELECT address, price, name, email, phone, landlord FROM `properties` WHERE address LIKE '%$search%' OR name LIKE '%$search%';");
 ?>
 	<div class="row small-up-1 medium-up-2 large-up-3">
 		<?php
