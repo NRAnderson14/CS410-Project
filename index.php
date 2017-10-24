@@ -3,8 +3,10 @@
 	include "header.php";
 	$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
 	$rows = $db->query("SELECT address, price, name, email, phone, landlord FROM `properties`;");
-?>
+	
+	?>
 	<script src=<?php print($path . "js/search.js") ?> ></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	<main>
 		<div id="searchArea" class="row" style="padding-right: 30px;">
 		<h1 id="title" class="small-10 medium-10 large-10 small-centered medium-centered large-centered" style="margin-top: 20px; margin-bottom: -60px; font-weight: bold;">Rent Smart</h1>
