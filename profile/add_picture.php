@@ -8,11 +8,11 @@
     $newfile = $to_images . basename($_FILES['img']['name']);
     $img_path = 'userimages/' . basename($_FILES['img']['name']);
 
-    if (move_uploaded_file($_FILES['img']['tmp_name'], $newfile)) {
-        echo "File successfully uploaded";
-    } else {
-        echo "Error uploading file";
+    if (!is_dir($path . 'userimages/')) {
+        mkdir($path . 'userimages/');
     }
+
+    move_uploaded_file($_FILES['img']['tmp_name'], $newfile);  #TODO: Make this secure
 
     $stmt = $db -> prepare("UPDATE users SET img_url = :path
                                       WHERE user_id = :user;");
