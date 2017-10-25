@@ -2,8 +2,9 @@
 	$path = "";
 	include "header.php";
 	?>
-	<script type="text/javascript" src="http://www.google.com/jsapi?key=YOUR_API_KEY"></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi?key=AIzaSyAJ2rfLi6pkzdNI3AcpRGvtGPSx9ScHFgc"></script>
 	<script src=<?php print($path . "js/search.js") ?> ></script>
+	<script src=<?php print($path . "js/geolocation.js") ?> ></script>
 	
 	<main>
 		<div id="searchArea" class="row" style="padding-right: 30px;">

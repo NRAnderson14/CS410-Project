@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	var city = "";
+	/*
 	navigator.geolocation.getCurrentPosition(success, error);
 
     function success(position) {
@@ -28,6 +29,7 @@ $(document).ready(function() {
 	function error(err) {
 		console.log(err)
 	}
+	*/
 	$("#searchButton").click(function(){
 		var search = $("#searchBar").val();
 		if(search == ""){
