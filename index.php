@@ -6,8 +6,8 @@
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	<main>
 		<div id="searchArea" class="row" style="padding-right: 30px;">
-		<h1 id="title" class="small-10 medium-10 large-10 small-centered medium-centered large-centered" style="margin-top: 20px; margin-bottom: -60px; font-weight: bold;">Rent Smart</h1>
-		<h4 class="small-10 medium-10 large-10 small-centered medium-centered large-centered" style="margin-top: 50px; margin-bottom: -40px; padding-left: 2px;">Renting made smarter.</h4>
+		<h1 id="title" class="small-10 medium-10 large-10 small-centered medium-centered large-centered" style="margin-top: 20px; margin-bottom: -60px; font-weight: bold;"> Rent Sm<span><i class="fa fa-home"></i></span>rt</h1>
+		<h4 id="subtitle" class="small-10 medium-10 large-10 small-centered medium-centered large-centered" style="margin-top: 50px; margin-bottom: -40px; padding-left: 2px;">Renting made smarter.</h4>
 			<div class="search-bar small-10 medium-10 large-10 small-centered medium-centered large-centered columns">
 				<input id="searchBar" type="text" class="searchTerm" name="search" placeholder="Search properties">
 				<button id="searchButton" type="submit" class="searchButton"><i class="fa fa-search"></i></button>				

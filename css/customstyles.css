@@ -1,8 +1,35 @@
+:root {
+	--main_blue: rgb(77, 118, 255);
+}
+#logo {
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.4em;
+	
+}
+.logIcon {
+	padding: 0px 0px 5px 5px;
+}
+
 .top-bar {
-	background: ;
+	background: var(--main_blue);
+	color: white;
+	text-shadow: 2px 1px 1px rgba(43, 69, 153, 0.4);
 }
 .top-bar li {
-	background: ;
+	background: var(--main_blue);
+	color: white;
+}
+.top-bar, .top-bar ul {
+    background-color: var(--main_blue);
+}
+
+.top-bar a {
+	color: white;
+}
+/* overrites foundation */
+.dropdown.menu > li.is-dropdown-submenu-parent > a::after {
+
+	border-top-color: #ffffff;
 }
 .login {
 	margin-top: 100px;
@@ -19,7 +46,7 @@
 }
 .searchButton {
 	position: absolute;
-	background: #1779BA;
+	background: var(--main_blue);
 	width: 50px;
 	height: 50px;
 	border-top-right-radius: 5px;
@@ -28,7 +55,7 @@
 }
 .searchButton:hover {
 	cursor: pointer;
-	background: #14659b;
+	background: #33adff;
 }
 .searchButton:active {
 	background: #1779BA;
@@ -38,10 +65,16 @@
 	font-weight: bold;
 }
 #title {
-	color: #1779BA;
+	color: var(--main_blue);
+	font-family: 'Roboto', sans-serif;
+	
 }
+#subtitle {
+	color: grey;
+}
+
 #searchArea {
-	background: ;
+	
 }
 
 
