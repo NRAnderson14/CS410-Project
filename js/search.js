@@ -24,7 +24,9 @@ navigator.geolocation.getCurrentPosition(success, error);
             $.getJSON(GEOCODING).done(function(location) {
                 
                 city = location.results[0].address_components[2].long_name;
-                var search = $("#searchBar").val(city)
+                //var search = $("#searchBar").val(city)
+				$("#searchBar").val(city);
+		$(".load").load("search/query_search.php", {"search" : city});
             })
 
         }
@@ -35,8 +37,7 @@ navigator.geolocation.getCurrentPosition(success, error);
 
 
 		 
-		$("#searchBar").val(city);
-		$(".load").load("search/query_search.php", {"search" : city});
+		
 	
 	
 	$("#searchButton").click(function(){
