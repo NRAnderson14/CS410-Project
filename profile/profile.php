@@ -5,12 +5,16 @@
 	$var = $_SESSION["username"];
 
     $db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
+    $stmt = $db -> prepare('SELECT img_url FROM users WHERE user_id = :user;');
+    $stmt -> execute(['user' => $var]);
+    $img_path = $stmt -> fetch();
 ?>
 <div class="row">
     <div class="large-12 columns text-center">
         <h1>Logged in as:</h1>
         <h3>
-        <p><?= $var ?></p>
+            <p><?= $var ?></p>
+            <img src="<?= $path . $img_path['img_url'] ?>" alt="Profile Picture">
         </h3>
     </div>
 </div>
@@ -54,5 +58,15 @@
                 }
             ?>
         </ul>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="large-12 columns">
+        <h5>Change profile picture: </h5>
+        <form action="add_picture.php" method="post" enctype="multipart/form-data">
+            <label>Select Image<input type="file" name="img" accept=".png, .jpg"></label>
+            <input type="submit" value="Change picture">
+        </form>
     </div>
 </div>
