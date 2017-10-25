@@ -17,8 +17,6 @@ $(document).ready(function() {
 			}else{
 				$(".load").load("search/query_search.php", {"search" : search});
 			}
-			
-		//});
 	});
 	$("#searchBar").on('keypress', function(e){
 		if(e.which === 13){
