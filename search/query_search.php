@@ -22,7 +22,7 @@
 			<div class="name">
 				<p><a href="#"><?=$name?></a></p>
 			</div>
-				<a href="properties/property.php?id=<?=$property_id?>"><img src="properties/propertyimages/<?=$img?>" class="thumbnail propertyImages" alt=""></a>
+				<a href="properties/property.php?id=<?=$property_id?>"><img src="images/<?=$img?>" class="thumbnail propertyImages" alt=""></a>
 				<div style="padding-left: 10px;">
 					<p>$<?=$price?></p>
 					<p><?=$address?></p>
