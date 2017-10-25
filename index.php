@@ -2,8 +2,9 @@
 	$path = "";
 	include "header.php";
 	?>
+	<script type="text/javascript" src="http://www.google.com/jsapi?key=YOUR_API_KEY"></script>
 	<script src=<?php print($path . "js/search.js") ?> ></script>
-	<script type="text/javascript" src="http://www.google.com/jsapi?key=YOURKEY"></script>
+	
 	<main>
 		<div id="searchArea" class="row" style="padding-right: 30px;">
 		<h1 id="title" class="small-10 medium-10 large-10 small-centered medium-centered large-centered" style="margin-top: 20px; margin-bottom: -60px; font-weight: bold;"> Rent Sm<span><i class="fa fa-home"></i></span>rt</h1>

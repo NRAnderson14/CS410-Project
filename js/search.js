@@ -1,13 +1,43 @@
 $(document).ready(function() {
-	if(google.loader.ClientLocation){
-		contry_code = google.loader.ClientLocation.address.country_code;
-		city = google.loader.ClientLocation.address.city;
-		region = google.loader.ClientLocation.address.region;
+	 var city = "";
+navigator.geolocation.getCurrentPosition(success, error);
+
+        function success(position) {
+            console.log(position.coords.latitude)
+            console.log(position.coords.longitude)
+
+            var GEOCODING = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + '%2C' + position.coords.longitude + '&language=en';
+
+            $.getJSON(GEOCODING).done(function(location) {
+                console.log(location)
+            })
+        }
+        function error(err) {
+            console.log(err)
+        }
+		navigator.geolocation.getCurrentPosition(success, error);
+
+        function success(position) {
+
+            var GEOCODING = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + '%2C' + position.coords.longitude + '&language=en';
+
+            $.getJSON(GEOCODING).done(function(location) {
+                
+                city = location.results[0].address_components[2].long_name;
+                var search = $("#searchBar").val(city)
+            })
+
+        }
+
+        function error(err) {
+            console.log(err)
+        }
+
+
+		 
 		$("#searchBar").val(city);
 		$(".load").load("search/query_search.php", {"search" : city});
-	}else{
-		city = "Cannot find your location";
-	}
+	
 	
 	$("#searchButton").click(function(){
 		
