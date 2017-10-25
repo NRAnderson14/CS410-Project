@@ -1,24 +1,20 @@
 <?php
 	//form for creating an account
 	$path = "../../";
-	include "$path"."header2.php";
+	include "$path"."header.php";
 	if(isset($_POST['submit'])){
 		print "Submit clicked";
 	}
 ?>
 	<script src="../../js/check_user.js"></script> 
 	<main style="margin-top: 20px;">
-		<div class="row">
-			<div class="small-12 medium-12 large-12 small-centered medium-centered large-centered columns">
-				<a style="background: #1779BA; color: white; padding: 10px;" href="../../index.php">< Back</a>
-			</div>
-		</div>
+	
 		<div class="row">
 			<div class="small-12 medium-12 large-12 small-centered medium-centered large-centered columns">
 				<h1 align="center">Create Profile</h1>
 			</div>
 		</div>
-		<form action="create.php" method="post" enctype="multipart/form-data">
+		<form class="signForm" action="create.php" method="post" enctype="multipart/form-data">
 		<div class="row">
 			<div class="small-10 medium-6 large-4 small-centered medium-centered large-centered columns">
 				<label>First Name
