@@ -6,7 +6,7 @@
 	}
 	$rows = $db->query("SELECT property_id, address, price, name, email, phone, landlord, image_url FROM `properties` WHERE address LIKE '%$search%' OR name LIKE '%$search%';");
 ?>
-	<div class="row small-up-1 medium-up-2 large-up-3">
+	<div id="propertyContent" class="row small-up-1 medium-up-2 large-up-3">
 		<?php
 			foreach($rows as $row){
 				$property_id=$row['property_id'];
@@ -18,12 +18,14 @@
 				$landlord=$row['landlord'];
 				$img = $row['image_url'];
 		?>
-			<div class="column column-block">
-			<div class="name">
-				<p><a href="#"><?=$name?></a></p>
-			</div>
-				<a href="properties/property.php?id=<?=$property_id?>"><img src="<?= $path . $img ?>" class="thumbnail" alt=""></a>
-				<div style="padding-left: 10px;">
+			<div class="column column-block propertyFrame">
+			
+				<a href="properties/property.php?id=<?=$property_id?>"><img src="<?= $path . $img ?>" class="propertyThumbnail" alt=""></a>
+
+				<div class="name">
+					<p><a href="#"><?=$name?></a></p>
+				</div>
+				<div>
 					<p>$<?=$price?></p>
 					<p><?=$address?></p>
 					<p><?=$email?></p>
