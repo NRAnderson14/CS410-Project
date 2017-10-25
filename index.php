@@ -1,9 +1,6 @@
 <?php
 	$path = "";
 	include "header.php";
-	$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
-	$rows = $db->query("SELECT address, price, name, email, phone, landlord FROM `properties`;");
-	
 	?>
 	<script src=<?php print($path . "js/search.js") ?> ></script>
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
@@ -16,29 +13,14 @@
 				<button id="searchButton" type="submit" class="searchButton"><i class="fa fa-search"></i></button>				
 				
 			</div>
-			
 		</div>
-		<!--
-		<div class="row">
-			<div class="small-10 medium-10 large-10 small-centered medium-centered large-centered">
-				<label>Filter
-					<select name="price">
-					<option value=""></option>
-						<option value="highest">Highest</option>
-						<option value="lowest">Lowest</option>
-					</select>
-				</label>
-			</div>
-		</div>
-		-->
 		<hr>
+		<div class="load">
 		<!--
 			input property info here using database
 		-->
-		<div class="load">
 		</div>
 		<hr>
-			<a href="login/index.php">Log in here</a>
 	</main>
 <?php
 	include "footer.php";
