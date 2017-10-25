@@ -19,7 +19,7 @@
 			<div class="name">
 				<p><a href="#"><?=$name?></a></p>
 			</div>
-				<img src="https://placehold.it/600x400" class="thumbnail" alt="">
+				<a href=""><img src="https://placehold.it/600x400" class="thumbnail" alt=""></a>
 				<div style="padding-left: 10px;">
 					<p>$<?=$price?></p>
 					<p><?=$address?></p>
