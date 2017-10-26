@@ -27,7 +27,7 @@
 ?>
 	<div class="upperBackground"></div>
 	<div class="row text-center" id="profileHeader">
-		<div class="large-6 columns">
+		<div class="large-12 columns">
 			<div class="row column text-center">
 			<h1 class="white"><?=$name?></h1>
 			
@@ -37,8 +37,10 @@
 			<h4 id="userName"><?= $landlord ?></h4>
 		</div>
 	</div>
+	<div style="background: black; padding-top: 50px; margin-top: 100px;">
 	<div class="row column text-center">
-		<div class="medium-6 large-6 columns">
+	
+		<div class="medium-12 large-12 columns">
 			<div class="orbit" role="region" aria-label="pictures" data-orbit data-auto-play="false">
 				<div class="orbit-controls">
 				  <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
@@ -117,6 +119,7 @@
 	}
 ?>			
 				</nav>
+				</div>
 			</div>
 		</div>
 	</div>
