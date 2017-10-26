@@ -66,8 +66,13 @@
     <div class="large-12 columns">
         <h5>Change profile picture: </h5>
         <form action="add_picture.php" method="post" enctype="multipart/form-data">
-            <label>Select Image<input type="file" name="img" accept=".png, .jpg"></label>
+            <label>Select Image<input type="file" name="img" accept=".png, .jpg, jpeg"></label>
             <input type="submit" value="Change picture">
         </form>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <p><a href="<?= $path ?>friends/friendsearch.php">Find Friends</a></p>
     </div>
 </div>
