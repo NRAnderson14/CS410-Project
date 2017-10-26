@@ -80,7 +80,6 @@
 			$count++;
 		}
 	}
-	//print $count;
 	$i = 1;
 	$j = 0;
 	if($count == 0){

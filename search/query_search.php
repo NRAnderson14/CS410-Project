@@ -32,8 +32,6 @@
 				</div>
 			</div>
 		<?php
-		$count++;
 			}
-			print $count;
 		?>
 		</div>
