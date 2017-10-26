@@ -167,6 +167,10 @@ height: 180px;
 }
 .scroll-top-wrapper i.fa {
 	line-height: inherit;
+	border-radius: 25px;
+}
+.white {
+	color: white;
 }
 
 

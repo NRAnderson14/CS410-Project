@@ -18,6 +18,7 @@
 			</div>
 		</div>
 		<hr>
+		
 		<div class="load">
 		<!--
 			input property info here using database

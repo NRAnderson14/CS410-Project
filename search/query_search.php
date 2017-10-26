@@ -8,6 +8,7 @@
 ?>
 	<div class="row small-up-1 medium-up-2 large-up-3">
 		<?php
+		$count = 0;
 			foreach($rows as $row){
 				$property_id=$row['property_id'];
 				$address=$row['address'];
@@ -20,7 +21,7 @@
 		?>
 			<div class="column column-block">
 			<div class="name">
-				<p><a href="#"><?=$name?></a></p>
+				<p><a href="properties/property.php?id=<?=$property_id?>"><?=$name?></a></p>
 			</div>
 				<a href="properties/property.php?id=<?=$property_id?>"><img src="images/<?=$img?>" class="thumbnail propertyImages" alt=""></a>
 				<div style="padding-left: 10px;">
@@ -31,6 +32,8 @@
 				</div>
 			</div>
 		<?php
+		$count++;
 			}
+			print $count;
 		?>
 		</div>
