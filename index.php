@@ -7,6 +7,7 @@
 	<script src=<?php print($path . "js/geolocation.js") ?> ></script>
 	
 	<main>
+		<div class="top"></div>
 		<div id="searchArea" class="row" style="padding-right: 30px;">
 		<h1 id="title" class="small-10 medium-10 large-10 small-centered medium-centered large-centered" style="margin-top: 20px; margin-bottom: -60px; font-weight: bold;"> Rent Sm<span><i class="fa fa-home"></i></span>rt</h1>
 		<h4 id="subtitle" class="small-10 medium-10 large-10 small-centered medium-centered large-centered" style="margin-top: 50px; margin-bottom: -40px; padding-left: 2px;">Renting made smarter.</h4>
@@ -24,6 +25,11 @@
 		</div>
 		<hr>
 	</main>
+	<div class="scroll-top-wrapper ">
+		<span class="scroll-top-inner">
+			<i class="fa fa-2x fa-arrow-circle-up"></i>
+		</span>
+	</div>
 <?php
 	include "footer.php";
 ?>
