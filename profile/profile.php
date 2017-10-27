@@ -10,6 +10,7 @@
     $img_path = $stmt -> fetch();
 ?>
 
+<main>
 <div class="upperBackground"></div>
 <div class="row" id="profileHeader">
     <div class="large-12 columns">
@@ -24,9 +25,12 @@
         <h4>Your Friends:</h4>
         <ul>
         <?php
-            $friends = $db -> prepare('SELECT tenants.fname AS fname, tenants.lname AS lname
-              FROM friends INNER JOIN tenants ON friends.user_two = tenants.user_id
-              WHERE friends.user_one = :name;');
+            $friends = $db -> prepare('(SELECT tenants.fname, tenants.lname
+                                                 FROM friends INNER JOIN tenants ON friends.user_two = tenants.user_id
+                                                 WHERE friends.user_one = :name) UNION
+                                                 (SELECT tenants.fname, tenants.lname
+                                                 FROM friends INNER JOIN tenants ON friends.user_one = tenants.user_id
+                                                 WHERE friends.user_two = :name);');
             $friends -> execute(['name' => $username]);
             foreach($friends as $friend) {
         ?>
@@ -64,6 +68,29 @@
 <br>
 <div class="row">
     <div class="large-12 columns">
+        <h4>Friend Requests</h4>
+        <ul>
+            <?php
+                $requests = $db -> prepare('SELECT users.fname, users.lname, users.user_id
+                                                      FROM friend_requests INNER JOIN users ON friend_requests.sending_user = users.user_id
+                                                      WHERE friend_requests.receiving_user = :user;');
+                $requests -> execute(['user' => $username]);
+                foreach($requests as $request) {
+            ?>
+                    <li id="buttonarea">
+                        <p><?= $request['fname'] . ' ' . $request['lname'] ?></p>
+                        <button name="<?= $request['user_id'] ?>" class="accept button">Accept</button>
+                        <button name="<?= $request['user_id'] ?>" class="decline button">Decline</button>
+                    </li>
+            <?php
+                }
+            ?>
+        </ul>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="large-12 columns">
         <h5>Change profile picture: </h5>
         <form action="add_picture.php" method="post" enctype="multipart/form-data">
             <label>Select Image<input type="file" name="img" accept=".png, .jpg, jpeg"></label>
@@ -76,3 +103,5 @@
         <p><a href="<?= $path ?>friends/friendsearch.php">Find Friends</a></p>
     </div>
 </div>
+</main>
+<script src="../js/confirmfriend.js" type="text/javascript"></script>
