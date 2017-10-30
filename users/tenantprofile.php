@@ -17,6 +17,9 @@
                                        (SELECT user_two AS friend FROM friends WHERE user_one = :user_viewing AND user_two = :friend);');
     $stmt2 -> execute(['user_viewing' => $user_viewing, 'friend' => $user]);
     $is_friend = $stmt2->rowCount() > 0 ? true : false;
+    if ($user_viewing == $user) {
+        $is_friend = true;  //Looking at your own profile
+    }
 ?>
 <main>
 <div class="upperBackground"></div>

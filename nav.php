@@ -9,7 +9,8 @@
 
 	<div class="top-bar-right">
 
-	<ul class="dropdown menu" data-dropdown-menu>			
+	<ul class="dropdown menu" data-dropdown-menu>
+        <li><a href="<?= $path ?>friends/find.php">Find Friends <i class="fa fa-search logIcon"></i></a></li>
 		<li><a href="<?= $path ?>profile/profile.php">My Account <i class="fa fa-user logIcon"></i></a></li>
 		<li><a href="<?= $path ?>login/logout.php">Log Out <i class="fa fa-user-times logIcon"></i></a></li>
 	</ul>	
