@@ -172,7 +172,9 @@ height: 180px;
 .white {
 	color: white;
 }
-
+button:hover {
+	cursor: pointer;
+}
 
 
 

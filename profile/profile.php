@@ -1,6 +1,7 @@
 <?php
-	include "session.php";
+	
 	$path = "../";
+	include "session.php";
 	include $path . "header.php";
 	$username = $_SESSION["username"];
 
