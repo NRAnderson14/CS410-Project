@@ -175,8 +175,41 @@ height: 180px;
 button:hover {
 	cursor: pointer;
 }
-
-
+.off-canvas-wrapper{
+	overflow: visible;
+}
+.off-canvas-content{
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+header, nav, footer{
+	flex-shrink: 0;
+}
+main{
+	flex: 1 0 auto;
+}
+.footer{
+	margin-top: 100px;
+	text-align: center;
+	color: white;
+	padding: 60px 60px;
+	background: #222;
+	display: inline;
+}
+.mid{
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+}
+.footer-header{
+	padding-bottom: 30px;
+}
+.foot a{
+	color: white;
+}
+.foot a:hover{
+	color: var(--main_blue);
+}
 
 
 
