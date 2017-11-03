@@ -21,6 +21,7 @@
 		<script src=<?php print($path . "js/vendor/foundation.js") ?> ></script>
 		<script src=<?php print($path . "js/vendor/foundation.min.js") ?> ></script>
 		<script src=<?php print($path . "js/app.js") ?> ></script>
+		<script src=<?php print($path . "js/submitPicture.js") ?> ></script>
 	</head>
 
 	

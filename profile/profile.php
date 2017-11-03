@@ -16,7 +16,13 @@
 <div class="row" id="profileHeader">
     <div class="large-12 columns">
         
-            <img src="<?= $path . $img_path['profile_img_url'] ?>" alt="Profile Picture" id="profilePicture">
+            <div id="imageArea">
+            <form id="imageForm" action="add_picture.php" method="post" enctype="multipart/form-data">
+                <label id="changePic" class="fa fa-camera-retro"><input id="pictureInput" class="hide" type="file" name="img" accept=".png, .jpg, jpeg"></label>
+                <input type="submit" value="Change picture"  class="hide" >
+                </form>
+                <img src="<?= $path . $img_path['profile_img_url'] ?>" alt="Profile Picture" id="profilePicture">  
+             </div>
             <h1 id="userName"><?= $username ?></h1>
     </div>
 </div>
@@ -92,13 +98,15 @@
 <br>
 <div class="row">
     <div class="large-12 columns">
-        <h5>Change profile picture: </h5>
+        <!-- <h5>Change profile picture: </h5>
         <form action="add_picture.php" method="post" enctype="multipart/form-data">
-            <label>Select Image<input type="file" name="img" accept=".png, .jpg, jpeg"></label>
+            <label class="fa fa-camera"><input class="hide" type="file" name="img" accept=".png, .jpg, jpeg"></label>
             <input type="submit" value="Change picture">
-        </form>
+        </form> -->
     </div>
 </div>
+
+
 <div class="row">
     <div class="large-12 columns">
         <p><a href="<?= $path ?>friends/friendsearch.php">Find Friends</a></p>

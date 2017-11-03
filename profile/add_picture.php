@@ -18,10 +18,12 @@
                                       WHERE username = :user;");
     $stmt -> execute(['path' => $img_path, 'user' => $user]);
     include $path . "header.php";
+
+    header("location: ".$path."profile/profile.php");
 ?>
-<div class="row">
+<!-- <div class="row">
     <div class="large-12 columns">
         <h3>File upload successful</h3>
         <p>Return to <a href="profile.php">your profile</a></p>
     </div>
-</div>
+</div> -->
