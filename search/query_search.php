@@ -64,17 +64,29 @@
                 $img = $imgs['image_url'];
 		?>
 			<div class="column">
-				<div class="card">
+				<div class="myCard">
 					<a href="properties/property.php?id=<?=$property_id?>"><div class="">
-					<p><?=$address?></p>
+					<h5 class="propertyTitle" ><?=$address?></h5>
 					</div>
-				<img src="<?=$img?>" class="thumbnail propertyImages" alt="">
+        <img src="<?=$img?>" class="thumbnail propertyImages" alt="">
+        
 					<div class="card-section">
-						<p>$<?=$price?></p>
-						<p><?=$address?></p>
-						<p><?=$email?></p>
-						<p><?=$phone?></p>
-					</div></a>
+            <!-- Star Rating still needs to be generated dinamically-->
+            <div class="stars">
+              <span class="fa fa-star" aria-hidden="true"></span>
+              <span class="fa fa-star" aria-hidden="true"></span>
+              <span class="fa fa-star" aria-hidden="true"></span>
+              <span class="fa fa-star-half-o" aria-hidden="true"></span>
+              <span class="fa fa-star-o" aria-hidden="true"></span>
+            </div>
+
+            <p class="price" >$<?=$price?></p>
+            <hr>
+						<p class="item"><?=$address?></p>
+						<p class="item"><?=$email?></p>
+						<p class="item"><?=$phone?></p>
+          </div></a>
+          
 				</div>
 			</div>
 		<?php
