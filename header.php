@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang='en'>
+<div class="off-canvas-wrapper">
+<div id="off-canvas" class="off-canvas position-left" data-off-canvas></div>
+<div class="off-canvas-content" data-off-canvas-content>
 	<head>
 		<title>Rent Smart</title>
 		<meta charset='utf-8'>

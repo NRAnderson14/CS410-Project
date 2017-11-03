@@ -42,7 +42,7 @@
   }
 
 ?>
-	<div class="row small-up-1 medium-up-2 large-up-3">
+	<div class="row small-up-1 medium-up-2 large-up-3 align-center">
 		<?php
 		$count = 0;
 			foreach($rows as $row){
@@ -63,16 +63,18 @@
                 $imgs = $imgs_stmt -> fetch(PDO::FETCH_ASSOC);
                 $img = $imgs['image_url'];
 		?>
-			<div class="column column-block">
-			<div class="name">
-				<p><a href="properties/property.php?id=<?=$property_id?>"><?=$address?></a></p>
-			</div>
-				<a href="properties/property.php?id=<?=$property_id?>"><img src="<?=$img?>" class="thumbnail propertyImages" alt=""></a>
-				<div style="padding-left: 10px;">
-					<p>$<?=$price?></p>
+			<div class="column">
+				<div class="card">
+					<a href="properties/property.php?id=<?=$property_id?>"><div class="card-divider">
 					<p><?=$address?></p>
-					<p><?=$email?></p>
-					<p><?=$phone?></p>
+					</div>
+				<img src="<?=$img?>" class="thumbnail propertyImages" alt="">
+					<div class="card-section">
+						<p>$<?=$price?></p>
+						<p><?=$address?></p>
+						<p><?=$email?></p>
+						<p><?=$phone?></p>
+					</div></a>
 				</div>
 			</div>
 		<?php

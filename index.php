@@ -24,7 +24,6 @@
 			input property info here using database
 		-->
 		</div>
-		<hr>
 	</main>
 	<div class="scroll-top-wrapper ">
 		<span class="scroll-top-inner">
