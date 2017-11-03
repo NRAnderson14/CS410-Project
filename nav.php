@@ -25,12 +25,12 @@
 	}
 	if(isset($_SESSION["username"])){
 		$username = $_SESSION["username"];
-		print "<li><a href='".$path."friends/find.php'>Find Friends <i class='fa fa-search logIcon'></i></a></li>";
+		print "<li><a id='findFriends' href='".$path."friends/find.php'>Find Friends <i class='fa fa-search logIcon'></i></a></li>";
 	}else{
 	}
 	?>
 
-		<li><a href="<?= $path ?>profile/profile.php">My Account <i class="fa fa-user logIcon"></i></a></li>
+		<li><a id="myAccount" href="<?= $path ?>profile/profile.php">My Account <i class="fa fa-user logIcon"></i></a></li>
 		
 	<?php
 	if(isset($_SESSION["is_auth"])){
@@ -39,7 +39,7 @@
 	}
 	if(isset($_SESSION["username"])){
 		$username = $_SESSION["username"];
-		print "<li><a href='".$path."login/logout.php'>Log Out <i class='fa fa-user-times logIcon'></i></a></li>";
+		print "<li><a id='logOut' href='".$path."login/logout.php'>Log Out <i class='fa fa-user-times logIcon'></i></a></li>";
 	}else{
 	}
 	?>

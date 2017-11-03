@@ -11,8 +11,8 @@
 	background: var(--main_blue);
 	color: white;
 	height: 55px;
-	text-shadow: 2px 1px 1px rgba(43, 69, 153, 0.4);
-	border-bottom: 2px solid rgba(43, 69, 153, 0.4);
+	text-shadow: 2px 1px 0.5px rgba(43, 69, 153, 0.8);
+	border-bottom: 1px solid rgba(43, 69, 153, 0.8);
 }
 .top-bar li {
 	background: var(--main_blue);
@@ -24,12 +24,16 @@
 
 .top-bar a {
 	color: white;
-	font-size: 0.96em;
+	font-size: 0.96em;	
 }
 #logo {
+	padding: 0px 0px;
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.3em;
+	background: rgba(43, 69, 153, 0.0);
 }
+
+
 /* overrites foundation */
 .dropdown.menu > li.is-dropdown-submenu-parent > a::after {
 

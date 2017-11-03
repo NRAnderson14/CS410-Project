@@ -65,7 +65,7 @@
 		?>
 			<div class="column">
 				<div class="card">
-					<a href="properties/property.php?id=<?=$property_id?>"><div class="card-divider">
+					<a href="properties/property.php?id=<?=$property_id?>"><div class="">
 					<p><?=$address?></p>
 					</div>
 				<img src="<?=$img?>" class="thumbnail propertyImages" alt="">
