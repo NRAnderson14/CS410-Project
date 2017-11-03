@@ -1,6 +1,6 @@
 <?php
     $path = '../';
-	include $path."profile/session.php";
+	include $path . "profile/session.php";
     include $path . "header.php";
 ?>
 <main>

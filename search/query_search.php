@@ -29,13 +29,11 @@
   	   $search = $_POST['search'];
   	}
 	$rows = $db->query("SELECT SQL_CALC_FOUND_ROWS
-                                      property_id, address, price, name, email, phone, landlord, image_url
-                                      FROM `properties`
-                                      WHERE address
-                                       LIKE '%$search%'
-                                       OR name
-                                       LIKE '%$search%'
-                                       LIMIT $startPage, $propertiesPerPage;");
+                                  property_id, address, monthly_cost, landlord
+                                  FROM `properties` 
+                                  WHERE address LIKE '%$search%'
+                                  OR city LIKE '%$search%'
+                                  LIMIT $startPage, $propertiesPerPage;");
 
   $rowsCount = $db->query("SELECT FOUND_ROWS() as rowsCount") ->fetch()['rowsCount'];
   $totalPage = (int)($rowsCount / $propertiesPerPage);
@@ -50,18 +48,26 @@
 			foreach($rows as $row){
 				$property_id=$row['property_id'];
 				$address=$row['address'];
-				$price=$row['price'];
-				$name=$row['name'];
-				$email=$row['email'];
-				$phone=$row['phone'];
+				$price=$row['monthly_cost'];
 				$landlord=$row['landlord'];
-				$img = $row['image_url'];
+
+				//TODO: Not have three queries for each result on the page
+                $landlord_stmt = $db -> prepare('SELECT public_email, phone FROM landlords WHERE username = :landlord;');
+                $landlord_stmt -> execute(['landlord' => $landlord]);
+                $landlord_info = $landlord_stmt -> fetch(PDO::FETCH_ASSOC);
+                $email = $landlord_info['public_email'];
+                $phone = $landlord_info['phone'];
+
+                $imgs_stmt = $db -> prepare('SELECT image_url FROM property_images WHERE property_id = :id;');
+                $imgs_stmt -> execute(['id' => $property_id]);
+                $imgs = $imgs_stmt -> fetch(PDO::FETCH_ASSOC);
+                $img = $imgs['image_url'];
 		?>
 			<div class="column column-block">
 			<div class="name">
-				<p><a href="properties/property.php?id=<?=$property_id?>"><?=$name?></a></p>
+				<p><a href="properties/property.php?id=<?=$property_id?>"><?=$address?></a></p>
 			</div>
-				<a href="properties/property.php?id=<?=$property_id?>"><img src="images/<?=$img?>" class="thumbnail propertyImages" alt=""></a>
+				<a href="properties/property.php?id=<?=$property_id?>"><img src="<?=$img?>" class="thumbnail propertyImages" alt=""></a>
 				<div style="padding-left: 10px;">
 					<p>$<?=$price?></p>
 					<p><?=$address?></p>

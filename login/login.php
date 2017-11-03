@@ -11,7 +11,9 @@
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 		if($username != "" && $password != ""){
-			$rows = $db->query("SELECT username, password FROM `users` WHERE username='$username'");
+
+			$rows = $db -> prepare("SELECT username, password FROM `users` WHERE username = :username");
+			$rows -> execute(['username' => $username]);
 			foreach($rows as $row){
 				$newUser = $row["username"];
 				$newPass = $row["password"];

@@ -1,38 +1,40 @@
 <?php
 	$path = "../";
 	include $path."header.php";
-	$img1 = "";
-	$img2 = "";
-	$img3 = "";
-	$img4 = "";
-	$img5 = "";
-	$img6 = "";
-	$img7 = "";
-	$img8 = "";
-	$img9 = "";
 	$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
 	if(isset($_GET['id'])){
 		$property_id=$_GET['id'];
 	}
-	$rows = $db->query("SELECT address, price, name, email, phone, landlord, image_url FROM properties WHERE property_id = '$property_id';");
+	$rows = $db->query("SELECT address, monthly_cost, landlord FROM properties WHERE property_id = '$property_id';");
 	foreach($rows as $row){
 		$address = $row['address'];
-		$price = $row['price'];
-		$name = $row['name'];
-		$email = $row['email'];
-		$phone = $row['phone'];
+		$price = $row['monthly_cost'];
 		$landlord = $row['landlord'];
-		$img = $row['image_url'];
 	}
+
+	//Get the landlord's info
+	$landlord_stmt = $db -> prepare('SELECT public_email, phone FROM landlords WHERE username = :landlord;');
+    $landlord_stmt -> execute(['landlord' => $landlord]);
+    $landlord_info = $landlord_stmt -> fetch(PDO::FETCH_ASSOC);
+
+    $email = $landlord_info['public_email'];
+    $phone = $landlord_info['phone'];
+
+    //Get the property images
+    $imgs_stmt = $db -> prepare('SELECT image_url FROM property_images WHERE property_id = :id;');
+    $imgs_stmt -> execute(['id' => $property_id]);
+    $imgs = $imgs_stmt -> fetchAll();
+    //Assuming the first image is the banner for the property
+    $img = $imgs[0]['image_url'];
 ?>
 	<div class="upperBackground"></div>
 	<div class="row text-center" id="profileHeader">
 		<div class="large-12 columns">
 			<div class="row column text-center">
-			<h1 class="white"><?=$name?></h1>
+			<h1 class="white"><?=$address?></h1>
 			
 		</div>
-			<a href=""><img src="<?= $path . $img_path['img_url'] ?>" alt="Profile Picture" id="profilePicture"></a>
+			<a href=""><img src="<?= $path . $img ?>" alt="Profile Picture" id="profilePicture"></a>
 			<h6 id="userName">Current Landlord:</h6>
 			<h4 id="userName"><?= $landlord ?></h4>
 		</div>
@@ -48,63 +50,16 @@
 				</div>
 				<ul class="orbit-container">
 <?php
-	$count = 0;
-	$num = 0;
-	$rows = $db->query("SELECT * FROM property_images WHERE property_id = '$property_id';");
-	
-		
-	foreach($rows as $row){
-		if($row['img1'] != null){
-			$count++;
-		}
-		if($row['img2'] != null){
-			$count++;
-		}
-		if($row['img3'] != null){
-			$count++;
-		}
-		if($row['img4'] != null){
-			$count++;
-		}
-		if($row['img5'] != null){
-			$count++;
-		}
-		if($row['img6'] != null){
-			$count++;
-		}
-		if($row['img7'] != null){
-			$count++;
-		}
-		if($row['img8'] != null){
-			$count++;
-		}
-		if($row['img9'] != null){
-			$count++;
-		}
-	}
+	$count = $imgs_stmt -> rowCount();
 	$i = 1;
-	$j = 0;
-	if($count == 0){
-		?>
-					<li class="is-active orbit-slide">
-						<img class="orbit-image thumbnail propertyImages" src="../images/stock_image.jpg" alt="picture">
-					</li>
-					</ul>
-				<nav class="orbit-bullets">
-				<button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
-		<?php
-	}else{
-?>	
-					<li class="is-active orbit-slide">
-						<img class="orbit-image thumbnail propertyImages" src="../images/<?=$property_id?><?=$i?>.jpg" alt="picture<?=$i?>">
-					</li>
-<?php
-	for($i = 2; $i <= $count; $i++){
+
+	foreach($imgs as $image){
 ?>
-					<li class="orbit-slide">
-						<img class="orbit-image thumbnail propertyImages" src="../images/<?=$property_id?><?=$i?>.jpg" alt="picture<?=$i?>">
+					<li class="is-active orbit-slide">
+						<img class="orbit-image thumbnail propertyImages" src="../<?= $image['image_url'] ?>" alt="picture<?=$i?>">
 					</li>
 <?php
+        $i++;
 	}
 ?>
 				</ul>
@@ -116,8 +71,7 @@
 					<button data-slide="<?=$j?>"><span class="show-for-sr">Second slide details.</span></button>
 <?php
 	}
-	}
-?>			
+?>
 				</nav>
 				</div>
 			</div>

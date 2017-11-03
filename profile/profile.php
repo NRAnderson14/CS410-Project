@@ -6,7 +6,7 @@
 	$username = $_SESSION["username"];
 
     $db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
-    $stmt = $db -> prepare('SELECT img_url FROM users WHERE user_id = :user;');
+    $stmt = $db -> prepare('SELECT profile_img_url FROM tenants WHERE username = :user;');
     $stmt -> execute(['user' => $username]);
     $img_path = $stmt -> fetch();
 ?>
@@ -16,7 +16,7 @@
 <div class="row" id="profileHeader">
     <div class="large-12 columns">
         
-            <img src="<?= $path . $img_path['img_url'] ?>" alt="Profile Picture" id="profilePicture">
+            <img src="<?= $path . $img_path['profile_img_url'] ?>" alt="Profile Picture" id="profilePicture">
             <h1 id="userName"><?= $username ?></h1>
     </div>
 </div>
@@ -27,10 +27,10 @@
         <ul>
         <?php
             $friends = $db -> prepare('(SELECT tenants.fname, tenants.lname
-                                                 FROM friends INNER JOIN tenants ON friends.user_two = tenants.user_id
+                                                 FROM friends INNER JOIN tenants ON friends.user_two = tenants.username
                                                  WHERE friends.user_one = :name) UNION
                                                  (SELECT tenants.fname, tenants.lname
-                                                 FROM friends INNER JOIN tenants ON friends.user_one = tenants.user_id
+                                                 FROM friends INNER JOIN tenants ON friends.user_one = tenants.username
                                                  WHERE friends.user_two = :name);');
             $friends -> execute(['name' => $username]);
             foreach($friends as $friend) {
@@ -47,17 +47,17 @@
         <h4>Your Addresses:</h4>
         <ul>
             <?php
-                $addresses = $db -> prepare('SELECT properties.address AS address, properties.apartment_number AS apt_num, tenant_addresses.is_current_address AS is_addr
-                    FROM properties INNER JOIN tenant_addresses ON properties.address = tenant_addresses.address
-                    WHERE tenant_addresses.user_id = :name
-                    ORDER BY NOT tenant_addresses.is_current_address;');
+                $addresses = $db -> prepare('SELECT properties.address, properties.apartment AS apt, tenant_addresses.is_current_address AS is_addr
+                                                       FROM properties INNER JOIN tenant_addresses ON properties.property_id = tenant_addresses.property_id
+                                                       WHERE tenant_addresses.username = :name
+                                                       ORDER BY NOT tenant_addresses.is_current_address;');
                 $addresses -> execute(['name' => $username]);
                 foreach($addresses as $address) {
             ?>
             <li><?php
 
             $curr_address = $address['is_addr'] == 1 ? 'Current Address' : 'Previous Address';
-            print $address['address'] . " " . $address['apt_num'] . " | " . $curr_address;
+            print $address['address'] . " " . $address['apt'] . " | " . $curr_address;
 
             ?></li>
             <?php
@@ -72,16 +72,16 @@
         <h4>Friend Requests</h4>
         <ul>
             <?php
-                $requests = $db -> prepare('SELECT users.fname, users.lname, users.user_id
-                                                      FROM friend_requests INNER JOIN users ON friend_requests.sending_user = users.user_id
+                $requests = $db -> prepare('SELECT tenants.fname, tenants.lname, tenants.username
+                                                      FROM friend_requests INNER JOIN tenants ON friend_requests.sending_user = tenants.username
                                                       WHERE friend_requests.receiving_user = :user;');
                 $requests -> execute(['user' => $username]);
                 foreach($requests as $request) {
             ?>
                     <li id="buttonarea">
                         <p><?= $request['fname'] . ' ' . $request['lname'] ?></p>
-                        <button name="<?= $request['user_id'] ?>" class="accept button">Accept</button>
-                        <button name="<?= $request['user_id'] ?>" class="decline button">Decline</button>
+                        <button name="<?= $request['username'] ?>" class="accept button">Accept</button>
+                        <button name="<?= $request['username'] ?>" class="decline button">Decline</button>
                     </li>
             <?php
                 }

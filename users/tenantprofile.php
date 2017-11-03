@@ -7,9 +7,9 @@
     $user_viewing = $_SESSION['username'];
 
     $db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
-    $stmt = $db -> prepare('SELECT users.user_id, tenants.fname, tenants.lname, users.img_url, tenants.about_tenant 
-                                      FROM users INNER JOIN tenants ON users.user_id = tenants.user_id
-                                      WHERE tenants.user_id = :user;');
+    $stmt = $db -> prepare('SELECT tenants.username, tenants.fname, tenants.lname, tenants.profile_img_url, tenants.about_tenant 
+                                      FROM tenants
+                                      WHERE tenants.username = :user;');
     $stmt -> execute(['user' => $user]);
     $user_info = $stmt -> fetch();
 
@@ -26,7 +26,7 @@
 <div class="row" id="profileHeader">
     <div class="large-12 columns">
 
-        <img src="<?= $path . $user_info['img_url'] ?>" alt="Profile Picture" id="profilePicture">
+        <img src="<?= $path . $user_info['profile_img_url'] ?>" alt="Profile Picture" id="profilePicture">
         <h1 id="userName"><?= $user_info['fname'] . ' ' . $user_info['lname'] ?></h1>
     </div>
 </div>
@@ -39,7 +39,7 @@
 
 <div class="row">
     <div class="large-12 columns text-center">
-        <button class="button" id="addbutton" name="<?= $user_info['user_id'] ?>"<?= $is_friend ? "disabled" : "" ?>>Add Friend</button>
+        <button class="button" id="addbutton" name="<?= $user_info['username'] ?>"<?= $is_friend ? "disabled" : "" ?>>Add Friend</button>
     </div>
 </div>
 <div id="burner"></div>

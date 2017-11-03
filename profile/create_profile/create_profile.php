@@ -54,8 +54,8 @@
 			<div class="small-10 medium-6 large-4 small-centered medium-centered large-centered columns">
 				<label>Member Type
 					<select name="membership_type">
-						<option value="Landlord">Landlord</option>
-						<option value="Tenant">Tenant</option>
+						<option value="landlord">Landlord</option>
+						<option value="tenant">Tenant</option>
 					</select>
 				</label>
 			</div>

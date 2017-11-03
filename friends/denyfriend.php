@@ -8,5 +8,5 @@
     $db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
 
     $stmt = $db -> prepare('DELETE FROM friend_requests
-                                       WHERE receiving_user = :user AND sending_user = :new_friend;');
+                                      WHERE receiving_user = :user AND sending_user = :new_friend;');
     $stmt -> execute(['user' => $user, 'new_friend' => $new_friend]);

@@ -14,8 +14,8 @@
 
     move_uploaded_file($_FILES['img']['tmp_name'], $newfile);  #TODO: Make this secure
 
-    $stmt = $db -> prepare("UPDATE users SET img_url = :path
-                                      WHERE user_id = :user;");
+    $stmt = $db -> prepare("UPDATE tenants SET profile_img_url = :path
+                                      WHERE username = :user;");
     $stmt -> execute(['path' => $img_path, 'user' => $user]);
     include $path . "header.php";
 ?>
