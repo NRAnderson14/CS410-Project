@@ -14,24 +14,38 @@
 <main>
     <div class="topSpace"></div>
     <div class="row">
-        <div id="profileBox" class="column large-6">
+        <div id="profileBox" class="column large-7">
                 <div id="imageArea">
                 <form id="imageForm" action="add_picture.php" method="post" enctype="multipart/form-data">
-                    <label id="changePic" class="fa fa-camera-retro"><input id="pictureInput" class="hide" type="file" name="img" accept=".png, .jpg, jpeg"></label>
+                    <label id="changePic" class="fa fa-camera"><input id="pictureInput" class="hide" type="file" name="img" accept=".png, .jpg, jpeg"></label>
                     <input type="submit" value="Change picture"  class="hide" >
                     </form>
                     <img src="<?= $path . $img_path['profile_img_url'] ?>" alt="Profile Picture" id="profilePicture">  
                 </div>
 
+         
                 <div class="informationBox">
                     <h1 id="userName"><?= $username ?></h1>
+                    <p class="socialBox">
+                        <span class="fa fa-facebook-official" aria-hidden="true"></span>
+                        <span class="fa fa-instagram" aria-hidden="true"></span>
+                        <span class="fa fa-linkedin-square" aria-hidden="true"></span>
+                        <span class="fa fa-twitter-square" aria-hidden="true"></span>
+                        <span class="fa fa-youtube-square" aria-hidden="true"></span>
+                    </p>
+                </div>
+                <div class="profileRating">
+                        <h2 class="yourRating">Your Rating</h2>
+                        <span class="fa fa-star profileStar" aria-hidden="true"></span>
+                        <span class="fa fa-star profileStar" aria-hidden="true"></span>
+                        <span class="fa fa-star profileStar" aria-hidden="true"></span>
+                        <span class="fa fa-star-half-o profileStar" aria-hidden="true"></span>
+                        <span class="fa fa-star-o profileStar" aria-hidden="true"></span>
                 </div>
         </div>
-            <div id="customFeed" class="column large-5">
-            <div class="informationBox">
-                    <h1 id="userName">News Feed</h1>
-                </div>
-        </div>
+            <div id="customFeed" class="column large-4">
+                <h3 id="customFeedTitle">News Feed</h3>
+            </div>
     </div>
 
     <div class="row">
