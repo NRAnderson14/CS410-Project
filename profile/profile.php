@@ -1,5 +1,5 @@
 <?php
-	
+
 	$path = "../";
 	include "session.php";
 	include $path . "header.php";
@@ -20,10 +20,10 @@
                     <label id="changePic" class="fa fa-camera"><input id="pictureInput" class="hide" type="file" name="img" accept=".png, .jpg, jpeg"></label>
                     <input type="submit" value="Change picture"  class="hide" >
                     </form>
-                    <img src="<?= $path . $img_path['profile_img_url'] ?>" alt="Profile Picture" id="profilePicture">  
+                    <img src="<?= $path . $img_path['profile_img_url'] ?>" alt="Profile Picture" id="profilePicture">
                 </div>
 
-         
+
                 <div class="informationBox">
                     <h1 id="userName"><?= $username ?></h1>
                     <p class="socialBox">
@@ -133,5 +133,15 @@
             <p><a href="<?= $path ?>friends/friendsearch.php">Find Friends</a></p>
         </div>
     </div>
+
+		<div class="row">
+				<div class="large-12 columns">
+						<p><a href="<?= $path ?>budget/budgetIndex.php">Budget</a></p>
+				</div>
+		</div>
+
 </main>
 <script src="../js/confirmfriend.js" type="text/javascript"></script>
+<?php
+	include '../footer.php';
+?>

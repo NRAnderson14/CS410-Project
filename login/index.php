@@ -6,7 +6,7 @@
 	<main class="login">
 		<div class="row">
 			<div class="small-12 medium-12 large-12 small-centered medium-centered large-centered columns">
-				<h1 align="center" class="formHeader">Rent Smart</h1>
+				<h1 align="center">Rent Sm<span class="fa fa-home"></span>rt</h1>
 			</div>
 		</div>
 		<form action="" method="post" enctype="multipart/form-data">
