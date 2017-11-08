@@ -96,7 +96,7 @@
 				
 			</div>
 			<div class="show-for-large">
-				<a href=""><img src="<?= $path . $img ?>" alt="Profile Picture" id="profilePicture"></a>
+				<a href=""><img style="margin-top: -40px;" src="<?= $path . $img ?>" alt="Profile Picture" id="profilePicture"></a>
 			</div>
 			<h6 id="userName">Current Landlord:</h6>
 			<h4 id="userName"><?= $landlord ?></h4>

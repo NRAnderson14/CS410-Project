@@ -45,6 +45,7 @@
   }
 
 ?>
+
 	<div class="row small-up-1 medium-up-2 large-up-3 align-center">
 		<?php
 		$count = 0;

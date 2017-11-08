@@ -9,15 +9,15 @@
 <div class="nav">
 <div class="off-canvas-wrapper">
 	<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-		<div class="off-canvas position-left reveal-for-large" style="position: fixed;" id="my-info" data-off-canvas data-position="left">
+		<div class="off-canvas position-left" id="my-info" data-off-canvas data-position="left">
 			<div class="row column">
 				<!--
 				Sidebar content
 				-->
 			</div>
 		</div>
-		<div class="off-canvas-content" data-off-canvas-content>
-			<div class="title-bar">
+		<div class="off-canvas-content" data-sticky-container data-off-canvas-content>
+			<div class="title-bar sticky" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1">
 				
 				
 					<?php
@@ -28,18 +28,18 @@
 					if(isset($_SESSION["username"])){
 						$username = $_SESSION["username"];
 						print "	<div class='title-bar-left' style='height: 40px;'>
-									<button id='#menu-icon' class='menu-icon hide-for-large' style='position: fixed; z-index: 2;' type='button' data-open='my-info'></button>
+									<button id='#menu-icon' class='menu-icon ' style='position: fixed; z-index: 2;' type='button' data-open='my-info'></button>
 									<a class='main-logo hide-for-large' href='".$path."'>Rent Sm<span class='fa fa-home'></span>rt</a>
-									<a class='show-for-large' style='margin-left: 20px;' href='".$path."'>Rent Sm<span class='fa fa-home'></span>rt</a>
+									<a class='show-for-large' style='margin-left: 50px;' href='".$path."'>Rent Sm<span class='fa fa-home'></span>rt</a>
 								</div>";
 						print "<div class='title-bar-right' style='margin-right: 20px;'>";
 						print "<a id='findFriends' title='Search Friends' href='".$path."friends/find.php'><i class='fa fa-search logIcon'></i></a>";
 						print "<a id='myAccount' style='top: 10px;' title='My Account' href='".$path."profile/profile.php'><i class='fa fa-user logIcon'></i></a>";
 					}else{
 						print "	<div class='title-bar-left' style='margin-top: 10px; height: 43px;'>
-									<button id='#menu-icon' class='menu-icon hide-for-large' style='position: fixed; z-index: 2;' type='button' data-open='my-info'></button>
+									<button id='#menu-icon' class='menu-icon ' style='position: fixed; z-index: 2;' type='button' data-open='my-info'></button>
 									<a class='main-logo hide-for-large' href='".$path."'>Rent Sm<span class='fa fa-home'></span>rt</a>
-									<a class='show-for-large' style='margin-left: 20px;' href='".$path."'>Rent Sm<span class='fa fa-home'></span>rt</a>
+									<a class='show-for-large' style='margin-left: 50px;' href='".$path."'>Rent Sm<span class='fa fa-home'></span>rt</a>
 								</div>";
 						print "<div class='title-bar-right' style='margin-right: 20px; margin-top: 13px;'>";
 						print "<a id='myAccount' style='top: 10px;' title='My Account' href='".$path."profile/profile.php'><i class='fa fa-user logIcon'></i></a>";
