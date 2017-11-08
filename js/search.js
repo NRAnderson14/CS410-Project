@@ -35,6 +35,7 @@ $(document).ready(function() {
 		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
 	}
 	
+	$(".advanced-search").hide();
 	
 	
 });

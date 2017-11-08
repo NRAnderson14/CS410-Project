@@ -22,7 +22,7 @@
 			</div>
 		</div>
 
-		<form>
+		<form class="advanced-search">
 		 <div class="row small-8 medium-8 large-8 small-centered medium-centered large-centered columns small-uncollapse">
       <div class="small-3 columns">
       <label>Min Price
