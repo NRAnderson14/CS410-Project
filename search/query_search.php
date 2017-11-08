@@ -27,12 +27,15 @@
 
   	if(isset($_POST['search'])){
   	   $search = $_POST['search'];
+	   $search = str_replace(',',' ',$search);
   	}
 	$rows = $db->query("SELECT SQL_CALC_FOUND_ROWS
-                                  property_id, address, monthly_cost, landlord
+                                  property_id, address, monthly_cost, landlord, state, country
                                   FROM `properties` 
                                   WHERE address LIKE '%$search%'
                                   OR city LIKE '%$search%'
+								  OR state like '%$search%'
+								  OR country like '%$search%'
                                   LIMIT $startPage, $propertiesPerPage;");
 
   $rowsCount = $db->query("SELECT FOUND_ROWS() as rowsCount") ->fetch()['rowsCount'];
@@ -63,42 +66,39 @@
                 $imgs = $imgs_stmt -> fetch(PDO::FETCH_ASSOC);
                 $img = $imgs['image_url'];
 		?>
-			<div class="column">
-				<div class="myCard">
-					<a href="properties/property.php?id=<?=$property_id?>"><div class="">
+		<div class="column">
+			<div class="myCard">
+				<a href="properties/property.php?id=<?=$property_id?>">
 					<h5 class="propertyTitle" ><?=$address?></h5>
-					</div>
-        <img src="<?=$img?>" class="thumbnail propertyImages" alt="">
-        
+					<img src="<?=$img?>" class="thumbnail propertyImages" alt="">
 					<div class="card-section">
-            <!-- Star Rating still needs to be generated dinamically-->
-            <div class="stars">
-              <span class="fa fa-star" aria-hidden="true"></span>
-              <span class="fa fa-star" aria-hidden="true"></span>
-              <span class="fa fa-star" aria-hidden="true"></span>
-              <span class="fa fa-star-half-o" aria-hidden="true"></span>
-              <span class="fa fa-star-o" aria-hidden="true"></span>
-            </div>
-
-            <p class="price" >$<?=$price?></p>
-            <hr>
+						<!-- Star Rating still needs to be generated dinamically-->
+						<div class="stars">
+							<span class="fa fa-star" aria-hidden="true"></span>
+							<span class="fa fa-star" aria-hidden="true"></span>
+							<span class="fa fa-star" aria-hidden="true"></span>
+							<span class="fa fa-star-half-o" aria-hidden="true"></span>
+							<span class="fa fa-star-o" aria-hidden="true"></span>
+						</div>
+						<p class="price" >$<?=$price?></p>
+						<hr>
 						<p class="item"><?=$address?></p>
 						<p class="item"><?=$email?></p>
 						<p class="item"><?=$phone?></p>
-          </div></a>
-          
-				</div>
+					</div>
+				</a>
 			</div>
+		</div>
 		<?php
 			}
 		?>
-		</div>
+	</div>
 
 <!--What I added -->
     <div class ="pagination">
-      <ul>
+		<ul>
       <?php for($i = 1; $i <= $totalPage; $i++): ?>
-          <li><a href="?startPage=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+			<li><a href="?startPage=<?php echo $i; ?>"><?php echo $i; ?></a></li>
       <?php endfor; ?>
-    </ul>
+		</ul>
     </div>

@@ -331,10 +331,8 @@ main{
 	flex: 1 0 auto;
 }
 .footer{
-	margin-top: 100px;
 	text-align: center;
 	color: white;
-	padding: 60px 60px;
 	background: #222;
 	display: inline;
 }
@@ -383,6 +381,39 @@ main{
 }
 .badge {
   	position: absolute;
-  	top: 0px;
-  	right: 0px;
+  	top: 10px;
+  	right: 10px;
+}
+.title-bar{
+	display: inline;
+}
+.title-bar-left{
+	margin-top: 10px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.3em;
+	font-weight: 300;
+}
+.title-bar{
+	background: var(--main_blue);
+	border-bottom: 2px solid rgba(43, 69, 153, 0.8);
+}
+.title-bar a{
+	color: white;
+	text-shadow: 2px 1px 0.5px rgba(43, 69, 153, 0.8);
+}
+.title-bar a:hover{
+	color: black;
+}
+.menu-icon{
+	color: black;
+	margin-top: 7px;
+}
+.main-logo{
+	margin-left: 50px;
+}
+#findFriends{
+	margin-right: 20px;
+}
+#log-out-logo{
+	margin-right: 20px;
 }

@@ -1,5 +1,5 @@
 		<footer class="footer">
-			<div class="wrap row small-up-1 medium-up-3 align-center">
+			<div class="small-up-1 medium-up-3 align-center">
 				<div class="column foot">
 				<h4 class="footer-header">Contact Info</h4>
 				<a href=""><p>some text</p></a>
@@ -20,6 +20,10 @@
 				</div>
 			</div>
 		</footer>
+		</div>
+	</div>
 </div>
-</div>
+	<script>
+	$(document).foundation();
+	</script>
 </html>
