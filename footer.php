@@ -1,4 +1,4 @@
-		<footer class="footer">
+		<footer class="footer" style="margin-top: 100px; padding-top: 40px;">
 			<div class="small-up-1 medium-up-3 align-center">
 				<div class="column foot">
 				<h4 class="footer-header">Contact Info</h4>
