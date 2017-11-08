@@ -69,7 +69,14 @@
     $imgs = $imgs_stmt -> fetchAll();
     //Assuming the first image is the banner for the property
     $img = $imgs[0]['image_url'];
-?>
+	
+	//Get landlord rating
+	$rating_stmt = $db->query("SELECT AVG(user_rating) as 'rating' FROM landlord_ratings WHERE username = '$landlord';");
+	foreach($rating_stmt as $rate){
+		$rating = $rate['rating'];
+	}
+	$rating = round($rating);
+	?>
 	<div class="upperBackground"></div>
 	<div class="row text-center" id="profileHeader">
 		<div class="large-12 columns">
@@ -154,9 +161,28 @@
 		</div>
 		<hr>
 	</div>
-	<div class="row column" style="text-align: ; margin-top: 0px;">
-		<div class="small-6 columns">
-			<div  style="text-align: left; margin-left: 20px;">
+	<div class="row column" style="text-align: ; margin-bottom: 0px;">
+	<div class="small-6 columns">
+	<div  style="max-width: 400px; min-width: 200px; margin: auto;">
+		<div class="rating small-centered" style="padding: 10px; border: 1px solid #ddd; background: #eee; margin: auto; margin-bottom: 40px; border-radius: 7px;">
+			<h5 style="text-align: center;"><?=$landlord?>'s Average Rating</h5>
+			<div style="text-align: center;">      
+			<?php
+				for($i = 0; $i < $rating; $i++){	
+			?>
+					<span class="fa fa-star profileStar" aria-hidden="true"></span>
+			<?php
+				}
+				for($i = 0; $i < 5-$rating; $i++){
+			?>
+					<span class="fa fa-star-o profileStar" aria-hidden="true"></span>
+			<?php
+				}
+			?>
+			</div>
+		</div>		
+		<br>
+			<div  style="margin: auto;">
 			<h4 style="font-weight: bold; text-align: center;">Amenities</h4>
 			<table>
 				<tr>
@@ -182,8 +208,9 @@
 			</table>
 			</div>
 		</div>
+		</div>
 		<div class="small-6 columns" style="border-left: 1px solid black;">
-		<div style="padding: 10px; border: 1px solid #ddd; background: #eee; max-width: 400px; min-width: 300px; margin: auto;">
+		<div style="padding: 10px; border: 1px solid #ddd; background: #eee; max-width: 400px; min-width: 300px; margin: auto; border-radius: 7px;">
 		<form action="#" method="post">
 			<p>Contact Landlord</p>
 			<label>Name:
