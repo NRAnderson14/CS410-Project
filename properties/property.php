@@ -56,12 +56,18 @@
 	}
 
 	//Get the landlord's info
-	$landlord_stmt = $db -> prepare('SELECT public_email, phone FROM landlords WHERE username = :landlord;');
+	$landlord_stmt = $db -> prepare('SELECT IFNULL(company_name, fname) AS name1, IFNULL(lname, 1) AS name2, public_email, phone FROM landlords WHERE username = :landlord;');
     $landlord_stmt -> execute(['landlord' => $landlord]);
     $landlord_info = $landlord_stmt -> fetch(PDO::FETCH_ASSOC);
 
     $email = $landlord_info['public_email'];
     $phone = $landlord_info['phone'];
+
+    if ($landlord_info['name2'] == 1) { //They have a company name
+        $landlord = $landlord_info['name1'];
+    } else {    //First and last name
+        $landlord = $landlord_info['name1'] . ' ' . $landlord_info['name2'];
+    }
 
     //Get the property images
     $imgs_stmt = $db -> prepare('SELECT image_url FROM property_images WHERE property_id = :id;');

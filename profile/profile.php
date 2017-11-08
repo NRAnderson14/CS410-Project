@@ -6,9 +6,9 @@
 	$username = $_SESSION["username"];
 
     $db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
-    $stmt = $db -> prepare('SELECT profile_img_url FROM tenants WHERE username = :user;');
+    $stmt = $db -> prepare('SELECT profile_img_url, fname, lname FROM tenants WHERE username = :user;');
     $stmt -> execute(['user' => $username]);
-    $img_path = $stmt -> fetch();
+    $usr_info = $stmt -> fetch();
 ?>
 
 <main>
@@ -20,12 +20,12 @@
                     <label id="changePic" class="fa fa-camera"><input id="pictureInput" class="hide" type="file" name="img" accept=".png, .jpg, jpeg"></label>
                     <input type="submit" value="Change picture"  class="hide" >
                     </form>
-                    <img src="<?= $path . $img_path['profile_img_url'] ?>" alt="Profile Picture" id="profilePicture">
+                    <img src="<?= $path . $usr_info['profile_img_url'] ?>" alt="Profile Picture" id="profilePicture">
                 </div>
 
 
                 <div class="informationBox">
-                    <h1 id="userName"><?= $username ?></h1>
+                    <h1 id="userName"><?= $usr_info['fname'] . ' ' . $usr_info['lname'] ?></h1>
                     <p class="socialBox">
                         <span class="fa fa-facebook-official" aria-hidden="true"></span>
                         <span class="fa fa-instagram" aria-hidden="true"></span>
