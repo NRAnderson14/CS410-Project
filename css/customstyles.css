@@ -330,8 +330,26 @@ main{
 .foot a:hover{
 	color: var(--main_blue);
 }
+.bed-bath-beyond{
+	list-style-type: none;
 
-
+	overflow: hidden;
+}
+.bed-bath-beyond li{
+	float: left;
+}
+.bed-bath-beyond li a{
+	display: block;
+	color: green;
+	text-align: center;
+	text-decoration: none;
+}
+.landlord-contact-button{
+	background: var(--main_blue);
+}
+.landlord-contact-button:hover{
+	background: #33adff;
+}
 
 
 
