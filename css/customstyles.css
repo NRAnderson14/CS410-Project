@@ -13,7 +13,7 @@
 	height: 55px;
 	text-shadow: 1px 1px 0.5px rgba(43, 69, 153, 0.8);
 	border-bottom: 1px solid rgba(43, 69, 153, 0.8);
-	
+
 }
 .top-bar li {
 	background: var(--main_blue);
@@ -25,7 +25,7 @@
 
 .top-bar a {
 	color: white;
-	font-size: 0.96em;	
+	font-size: 0.96em;
 }
 #logo {
 	padding: 0px 0px;
@@ -70,6 +70,27 @@
 .searchButton:active {
 	background: #1779BA;
 }
+
+.advanced-searchButton {
+	background: var(--main_blue);
+	width: 200px;
+	height: 25px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	color: white;
+}
+.advanced-searchButton:hover {
+	cursor: pointer;
+	background: #33adff;
+}
+.advanced-searchButton:active {
+	background: #1779BA;
+}
+.advanced-search{
+}
+
 .name {
 	color: #1779BA;
 	font-weight: bold;
@@ -77,14 +98,14 @@
 #title {
 	color: var(--main_blue);
 	font-family: 'Roboto', sans-serif;
-	
+
 }
 #subtitle {
 	color: grey;
 }
 
 #searchArea {
-	
+
 }
 
 /* LOG IN/SIGNUP STYLES */
@@ -186,7 +207,7 @@
 	font-size: 20px;
 	opacity: 0;
 	transition: 200ms;
-	text-shadow: 
+	text-shadow:
 	-5px 0px 50px black,
 	5px 0px 50px black,
 	0px -5px 20px black;
@@ -230,7 +251,7 @@
 	color: rgba(90,90,90,1);
 	font-weight: 400;
 	letter-spacing: 1.3px;
-	
+
   }
   .price {
 	font-size: 32px;
@@ -365,10 +386,3 @@ main{
   	top: 0px;
   	right: 0px;
 }
-
-
-
-
-
-
-

@@ -11,10 +11,10 @@ $(document).ready(function() {
 		if(e.which === 13){
 			var search = $("#searchBar").val();
 			if(search ==""){
-				
+
 			}else{
 				$(".load").load("search/query_search.php", {"search" : search});
-			}	
+			}
 		}
 	});
 	$(function(){
@@ -34,8 +34,27 @@ $(document).ready(function() {
 		offsetTop = offset.top;
 		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
 	}
-	
-	$(".advanced-search").hide();
-	
-	
+
+
+$(".advanced-search").hide();
+var searchCount = 1;
+
+
+$(".advanced-searchButton").click(function(){
+	$(".advanced-search").animate({
+		opacity:  1,
+		left: 0,
+		height: "toggle"
+	}, 200, function(){
+	if (searchCount === 1){
+    $(".advanced-search").show();
+		$("advanced-searchButton").removeClass("fa fa-angle-double-down").addClass("fa fa-angle-double-up");
+		searchCount--;
+	}
+	else if (searchCount === 0){
+		$(".advanced-search").hide();
+		searchCount++;
+	}
+});
+});
 });

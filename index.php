@@ -18,10 +18,25 @@
 			<div class="search-bar small-10 medium-10 large-10 small-centered medium-centered large-centered columns">
 				<input id="searchBar" type="text" class="searchTerm" name="search" placeholder="Try typing 'Chicago'">
 				<button id="searchButton" type="submit" class="searchButton"><i class="fa fa-search"></i></button>
-
 			</div>
 		</div>
 
+<div class="searchDown">
+		<div class="row small-12 small-centered  columns small-uncollapse">
+			<div class="columns" style="text-align:center">
+			<button id="advanced-searchButton" type="submit" class="advanced-searchButton">Advanced Search<i class="fa fa-angle-double-down"></i></button>
+		</div>
+		</div>
+	</div>
+<!--
+		<div class="searchUp">
+		<div class="row small-12 small-centered  columns small-uncollapse">
+			<div class="columns" style="text-align:center">
+			<button id="advanced-searchButtonClose" type="submit" class="advanced-searchButtonClose">Advanced Search<i class="fa fa-angle-double-up"></i></button>
+		</div>
+		</div>
+	</div>
+-->
 		<form class="advanced-search">
 		 <div class="row small-8 medium-8 large-8 small-centered medium-centered large-centered columns small-uncollapse">
       <div class="small-3 columns">
