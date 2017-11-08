@@ -56,10 +56,11 @@
 	}
 
 	//Get the landlord's info
-	$landlord_stmt = $db -> prepare('SELECT IFNULL(company_name, fname) AS name1, IFNULL(lname, 1) AS name2, public_email, phone FROM landlords WHERE username = :landlord;');
+	$landlord_stmt = $db -> prepare('SELECT IFNULL(company_name, fname) AS name1, IFNULL(lname, 1) AS name2, public_email, phone, username FROM landlords WHERE username = :landlord;');
     $landlord_stmt -> execute(['landlord' => $landlord]);
     $landlord_info = $landlord_stmt -> fetch(PDO::FETCH_ASSOC);
 
+	$landlord_username= $landlord_info['username'];
     $email = $landlord_info['public_email'];
     $phone = $landlord_info['phone'];
 
@@ -77,7 +78,7 @@
     $img = $imgs[0]['image_url'];
 	
 	//Get landlord rating
-	$rating_stmt = $db->query("SELECT AVG(user_rating) as 'rating' FROM landlord_ratings WHERE username = '$landlord';");
+	$rating_stmt = $db->query("SELECT AVG(user_rating) as 'rating' FROM landlord_ratings WHERE username = '$landlord_username';");
 	foreach($rating_stmt as $rate){
 		$rating = $rate['rating'];
 	}
@@ -172,7 +173,8 @@
 	<div  style="max-width: 400px; min-width: 200px; margin: auto;">
 		<div class="rating small-centered" style="padding: 10px; border: 1px solid #ddd; background: #eee; margin: auto; margin-bottom: 40px; border-radius: 7px;">
 			<h5 style="text-align: center;"><?=$landlord?>'s Average Rating</h5>
-			<div style="text-align: center;">      
+			<div style="text-align: center;">
+				<h1><?=$rating?></h1>
 			<?php
 				for($i = 0; $i < $rating; $i++){	
 			?>

@@ -350,7 +350,21 @@ main{
 .landlord-contact-button:hover{
 	background: #33adff;
 }
-
+.button-badge {
+	background-color: $primary-color;
+	text-decoration: none;
+	padding: 1rem 1.5rem;
+	position: relative;
+	display: inline-block;
+	border-radius: .2rem;
+	transition: all ease 0.4s;
+	margin-top: -5px;
+}
+.badge {
+  	position: absolute;
+  	top: 0px;
+  	right: 0px;
+}
 
 
 

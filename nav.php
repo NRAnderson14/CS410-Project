@@ -39,6 +39,7 @@
 	}
 	if(isset($_SESSION["username"])){
 		$username = $_SESSION["username"];
+		print "<li><a href='#' class='button-badge'><i class='fa fa-envelope'></i><span class='badge alert'>1</span></a></li>";
 		print "<li><a id='logOut' href='".$path."login/logout.php'>Log Out <i class='fa fa-user-times logIcon'></i></a></li>";
 	}else{
 	}
