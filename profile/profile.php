@@ -17,7 +17,7 @@
         <div id="profileBox" class="column large-7">
                 <div id="imageArea">
                 <form id="imageForm" action="add_picture.php" method="post" enctype="multipart/form-data">
-                    <label id="changePic" class="fa fa-camera"><input id="pictureInput" class="hide" type="file" name="img" accept=".png, .jpg, jpeg"></label>
+                    <label id="changePic" class="fa fa-camera"><input id="pictureInput" class="hide" type="file" name="img" accept=".png, .jpg, .jpeg"></label>
                     <input type="submit" value="Change picture"  class="hide" >
                     </form>
                     <img src="<?= $path . $usr_info['profile_img_url'] ?>" alt="Profile Picture" id="profilePicture">
@@ -53,16 +53,16 @@
             <h4>Your Friends:</h4>
             <ul>
             <?php
-                $friends = $db -> prepare('(SELECT tenants.fname, tenants.lname
+                $friends = $db -> prepare('(SELECT tenants.fname, tenants.lname, tenants.username
                                                     FROM friends INNER JOIN tenants ON friends.user_two = tenants.username
                                                     WHERE friends.user_one = :name) UNION
-                                                    (SELECT tenants.fname, tenants.lname
+                                                    (SELECT tenants.fname, tenants.lname, tenants.username
                                                     FROM friends INNER JOIN tenants ON friends.user_one = tenants.username
                                                     WHERE friends.user_two = :name);');
                 $friends -> execute(['name' => $username]);
                 foreach($friends as $friend) {
             ?>
-                <li><?= $friend['fname'] . " " . $friend['lname'] ?></li>
+                    <li><a href="../users/tenantprofile.php?user=<?= $friend['username'] ?>"><?= $friend['fname'] . " " . $friend['lname'] ?></a></li>
             <?php
                 }
             ?>
@@ -74,19 +74,19 @@
             <h4>Your Addresses:</h4>
             <ul>
                 <?php
-                    $addresses = $db -> prepare('SELECT properties.address, properties.apartment AS apt, tenant_addresses.is_current_address AS is_addr
+                    $addresses = $db -> prepare('SELECT properties.property_id, properties.address, properties.apartment AS apt, tenant_addresses.is_current_address AS is_addr
                                                         FROM properties INNER JOIN tenant_addresses ON properties.property_id = tenant_addresses.property_id
                                                         WHERE tenant_addresses.username = :name
                                                         ORDER BY NOT tenant_addresses.is_current_address;');
                     $addresses -> execute(['name' => $username]);
                     foreach($addresses as $address) {
                 ?>
-                <li><?php
+                <li><a href="../properties/property.php?id=<?= $address['property_id'] ?>"><?php
 
                 $curr_address = $address['is_addr'] == 1 ? 'Current Address' : 'Previous Address';
-                print $address['address'] . " " . $address['apt'] . " | " . $curr_address;
+                print $address['address'] . " " . $address['apt'] . "</a> | " . $curr_address;
 
-                ?></li>
+                    ?></li>
                 <?php
                     }
                 ?>
