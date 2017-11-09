@@ -378,6 +378,10 @@ main{
 	border-radius: .2rem;
 	transition: all ease 0.4s;
 	margin-top: -5px;
+	color: white;
+}
+.button-badge:hover{
+	color: black;
 }
 .badge {
   	position: absolute;
@@ -417,3 +421,30 @@ main{
 #log-out-logo{
 	margin-right: 20px;
 }
+.dropdown-pane{
+	padding: 0;
+}
+.dropdown-contents a:focus{
+	outline: none;
+}
+.dropdown-contents a{
+	color: black;
+	text-shadow: none;
+}
+.content-style-new p{
+	margin: auto;
+	height: 70px;
+	font-size: 12px;
+	font-size: 12px;
+	background: #E5E5E5;
+}
+.content-style p{
+	margin: auto;
+	height: 70px;
+	font-size: 12px;
+	font-size: 12px;
+}
+.content-style p:hover{
+	background: #E6E6E6;
+}
+

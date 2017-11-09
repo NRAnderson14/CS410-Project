@@ -27,4 +27,5 @@
 	<script>
 	$(document).foundation();
 	</script>
+	<script src=<?php print($path . "js/notification.js") ?> ></script>
 </html>
