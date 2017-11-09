@@ -5,6 +5,8 @@ $(document).ready(function() {
 	$(".notification-count").click(function(){
 		var view = document.getElementById("notify-count").innerHTML;
 		$(".loading").load(""+path+"profile/notifications.php", {"user" : user});
-		document.getElementById("notify-count").innerHTML = "0";
+		var badge = document.getElementById("notify-count").innerHTML = "";
+		document.getElementById("notify-count").classList.remove("badge");
+		document.getElementById("notify-count").classList.remove("alert");
 	});
 });

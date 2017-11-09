@@ -54,7 +54,24 @@
 					if(isset($_SESSION["username"])){
 						$username = $_SESSION["username"];
 					?>
-						<button title="Notifications" class="button-badge notification-count" type="button" data-toggle="example-dropdown-bottom-right"><i class='fa fa-envelope clear-notification'></i><span id="notify-count" class='badge alert'><?=$rowsCount?></span></button>
+					<button title="Notifications" class="button-badge notification-count" type="button" data-toggle="example-dropdown-bottom-right">
+						<i class='fa fa-envelope clear-notification'></i>
+					<?php
+						if($rowsCount > 0){			
+					?>
+							<span id="notify-count" class='badge alert'>
+							<?=$rowsCount?>	
+							</span>	
+					<?php
+						}else{
+					?>
+							<span id="notify-count" class=''>
+							
+							</span>	
+					<?php
+						}
+					?>
+					</button>
 						<div class="dropdown-pane" style="overflow:scroll; height: 400px;" data-position="bottom" data-alignment="right" id="example-dropdown-bottom-right" data-dropdown data-close-on-click="true" data-auto-focus="true" aria-autoclose="false">
 						<div class="dropdown-contents" style="color: black; text-align: left;">
 						<!--
