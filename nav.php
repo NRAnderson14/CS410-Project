@@ -55,6 +55,7 @@
 						$username = $_SESSION["username"];
 					?>
 						<button title="Notifications" class="button-badge notification-count" type="button" data-toggle="example-dropdown-bottom-right"><i class='fa fa-envelope clear-notification'></i><span id="notify-count" class='badge alert'><?=$rowsCount?></span></button>
+						<div class="dropdown-pane" style="overflow:scroll; height: 400px;" data-position="bottom" data-alignment="right" id="example-dropdown-bottom-right" data-dropdown data-close-on-click="true" data-auto-focus="true" aria-autoclose="false">
 						<div class="dropdown-contents" style="color: black; text-align: left;">
 						<!--
 						Notification contents go here
