@@ -4,7 +4,7 @@ $(document).ready(function() {
 		city = google.loader.ClientLocation.address.city;
 		state = google.loader.ClientLocation.address.region;
 		$("#searchBar").val(city + ", " + state);
-		$(".load").load("search/query_search.php", {"search" : city + ", " + state});
+		$(".load").load("search/query_search.php", {"city": city, "state" : state});
 	}else{
 		city = "Couldn't find your location";
 	}
