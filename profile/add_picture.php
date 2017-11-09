@@ -14,12 +14,21 @@
 
     move_uploaded_file($_FILES['img']['tmp_name'], $newfile);  #TODO: Make this secure
 
-    $stmt = $db -> prepare("UPDATE tenants SET profile_img_url = :path
-                                      WHERE username = :user;");
-    $stmt -> execute(['path' => $img_path, 'user' => $user]);
-    include $path . "header.php";
+    if($_SESSION['user_type'] == "tenant") {
+        $stmt = $db->prepare("UPDATE tenants SET profile_img_url = :path
+                                        WHERE username = :user;");
+        $stmt->execute(['path' => $img_path, 'user' => $user]);
+        include $path . "header.php";
 
-    header("location: ".$path."profile/profile.php");
+        header("location: " . $path . "profile/profile.php");
+    } else {
+        $stmt = $db->prepare("UPDATE landlords SET profile_img_url = :path
+                                        WHERE username = :user;");
+        $stmt->execute(['path' => $img_path, 'user' => $user]);
+        include $path . "header.php";
+
+        header("location: " . $path . "profile/landlordprofile.php");
+    }
 ?>
 <!-- <div class="row">
     <div class="large-12 columns">

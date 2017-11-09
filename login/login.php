@@ -12,16 +12,23 @@
 		$password = $_POST['password'];
 		if($username != "" && $password != ""){
 
-			$rows = $db -> prepare("SELECT username, password FROM `users` WHERE username = :username");
+			$rows = $db -> prepare("SELECT username, password, user_type FROM `users` WHERE username = :username");
 			$rows -> execute(['username' => $username]);
 			foreach($rows as $row){
 				$newUser = $row["username"];
 				$newPass = $row["password"];
+				$user_type = $row["user_type"];
 			}
 			if($username == $newUser && $password == $newPass){
 				$_SESSION["is_auth"] = true;
 				$_SESSION["username"] = $username;
-				header("location: ../profile/profile.php");
+				$_SESSION['user_type'] = $user_type;
+
+				if($user_type == "tenant") {
+                    header("location: ../profile/profile.php");
+                } else {
+				    header("location: ../profile/landlordprofile.php");
+                }
 			}else{
 				print "Username or Password is incorrect";
 			}

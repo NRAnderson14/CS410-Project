@@ -8,5 +8,9 @@ $(document).ready(function() {
             var term = $('#searchBar').val();
             $('#resarea').load('friendsearch.php', {'search': term});
         }
-    })
+    });
+    $('#searchBar').keyup(function() {
+        var term = $('#searchBar').val();
+        $('#resarea').load('friendsearch.php', {'search': term});
+    });
 });

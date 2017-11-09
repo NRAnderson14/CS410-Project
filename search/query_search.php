@@ -44,6 +44,7 @@
 								  OR country LIKE '%$search%'
 								  OR monthly_cost LIKE '%$search%'
 								  OR landlord LIKE '%$search%'
+								  OR CONCAT(city, ', ', state) LIKE '%$search%'
 								  LIMIT $startPage, $propertiesPerPage;");
   	}
   $rowsCount = $db->query("SELECT FOUND_ROWS() as rowsCount") ->fetch()['rowsCount'];

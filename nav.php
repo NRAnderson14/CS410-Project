@@ -4,7 +4,6 @@
 		session_start();
 	}
 	
-	
 ?>
 <div class="nav">
 <div class="off-canvas-wrapper">
@@ -40,7 +39,12 @@
 						$rowsCount = $db->query("SELECT FOUND_ROWS() as rowsCount") ->fetch()['rowsCount'];
 						$rows = $db->query("SELECT sender, notification, type FROM notifications WHERE recipient = '$username' AND viewed = '1'");
 						print "<a id='findFriends' title='Search Friends' href='".$path."friends/find.php'><i class='fa fa-search logIcon'></i></a>";
-						print "<a id='myAccount' style='top: 10px;' title='My Account' href='".$path."profile/profile.php'><i class='fa fa-user logIcon'></i></a>";
+                        //Based on the user type, take them to the right profile page
+                        if($_SESSION['user_type'] == "tenant") {
+                            print "<a id='myAccount' style='top: 10px;' title='My Account' href='" . $path . "profile/profile.php'><i class='fa fa-user logIcon'></i></a>";
+                        } else {
+                            print "<a id='myAccount' style='top: 10px;' title='My Account' href='" . $path . "profile/landlordprofile.php'><i class='fa fa-user logIcon'></i></a>";
+                        }
 					}else{
 						print "<a id='myAccount' class='button-badge' style='' title='My Account' href='".$path."profile/profile.php'><i class='fa fa-user logIcon'></i></a>";
 					}
