@@ -40,7 +40,6 @@ $(document).ready(function() {
 $(".advanced-search").hide();
 var searchCount = 1;
 
-
 $(".advanced-searchButton").click(function(){
 	$(".advanced-search").animate({
 		opacity:  1,
@@ -49,10 +48,13 @@ $(".advanced-searchButton").click(function(){
 	}, 200, function(){
 	if (searchCount === 1){
     $(".advanced-search").show();
-		$("advanced-searchButton").removeClass("fa fa-angle-double-down").addClass("fa fa-angle-double-up");
+		$(".advanced-searchButton").find('i').removeClass('fa fa-angle-double-down')
+		$(".advanced-searchButton").find('i').addClass('fa fa-angle-double-up')
 		searchCount--;
 	}
 	else if (searchCount === 0){
+		$(".advanced-searchButton").find('i').removeClass('fa fa-angle-double-up')
+		$(".advanced-searchButton").find('i').addClass('fa fa-angle-double-down')
 		$(".advanced-search").hide();
 		searchCount++;
 	}

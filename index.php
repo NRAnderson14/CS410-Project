@@ -70,7 +70,7 @@
 	</form>
 	<hr>
 	<div class="load">
-		<!-->
+		<!--
 			input property info here using database
 		-->
 	</div>
@@ -79,7 +79,7 @@
 		<span class="scroll-top-inner">
 			<i class="fa fa-2x fa-arrow-circle-up"></i>
 		</span>
-	</div>		
+	</div>
 <?php
 	include "footer.php";
 ?>
