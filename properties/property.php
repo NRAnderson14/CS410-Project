@@ -78,11 +78,15 @@
     $img = $imgs[0]['image_url'];
 	
 	//Get landlord rating
-	$rating_stmt = $db->query("SELECT AVG(user_rating) as 'rating' FROM landlord_ratings WHERE username = '$landlord_username';");
-	foreach($rating_stmt as $rate){
-		$rating = $rate['rating'];
-	}
-	$rating = round($rating);
+    $rating_stmt = $db -> prepare('SELECT AVG(rating) AS rating FROM landlord_ratings WHERE landlord = :user;');
+    $rating_stmt -> execute(['user' => $landlord_username]);
+
+    $rating = $rating_stmt -> fetch();
+    $ratingval = $rating['rating'];
+    $ratingval = $ratingval * 2.0;
+    $ratingval = round($ratingval);
+    $ratingval = $ratingval / 2.0;
+
 	?>
 	<div class="upperBackground"></div>
 	<div class="row text-center" id="profileHeader">
@@ -174,18 +178,20 @@
 		<div class="rating small-centered" style="padding: 10px; border: 1px solid #ddd; background: #eee; margin: auto; margin-bottom: 40px; border-radius: 7px;">
 			<h5 style="text-align: center;"><?=$landlord?>'s Average Rating</h5>
 			<div style="text-align: center;">
-				<h1><?=$rating?></h1>
-			<?php
-				for($i = 0; $i < $rating; $i++){	
-			?>
-					<span class="fa fa-star profileStar" aria-hidden="true"></span>
-			<?php
-				}
-				for($i = 0; $i < 5-$rating; $i++){
-			?>
-					<span class="fa fa-star-o profileStar" aria-hidden="true"></span>
-			<?php
-				}
+				<h1><?=$ratingval?></h1>
+            <?php
+				for($i = 1.0; $i <= 5.0; $i += 1.0) {
+				    if($ratingval > $i || $ratingval == $i) {
+				        //Whole star
+                        print '<span class="fa fa-star profileStar" aria-hidden="true"></span>';
+                    } else if($ratingval > $i-1 && $ratingval < $i) {
+				        //Half star
+                        print '<span class="fa fa-star-half-o profileStar" aria-hidden="true"></span>';
+                    } else {
+				        //Empty star
+                        print '<span class="fa fa-star-o profileStar" aria-hidden="true"></span>';
+                    }
+                }
 			?>
 			</div>
 		</div>		

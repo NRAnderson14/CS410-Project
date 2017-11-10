@@ -45,21 +45,26 @@
                 $rating_stmt -> execute(['user' => $username]);
 
                 $rating = $rating_stmt -> fetch();
-                $ratingval = round($rating['rating']);
+                $ratingval = $rating['rating'];
+                $ratingval = $ratingval * 2.0;
+                $ratingval = round($ratingval);
+                $ratingval = $ratingval / 2.0;
             ?>
             <div class="profileRating">
                 <h2 class="yourRating">Your Rating</h2>
                 <?php
-                for($i = 0; $i < $ratingval; $i++){
-                    ?>
-                    <span class="fa fa-star profileStar" aria-hidden="true"></span>
-                    <?php
-                }
-                for($i = 0; $i < 5-$ratingval; $i++){
-                    ?>
-                    <span class="fa fa-star-o profileStar" aria-hidden="true"></span>
-                    <?php
-                }
+                    for($i = 1.0; $i <= 5.0; $i += 1.0) {
+                        if($ratingval > $i || $ratingval == $i) {
+                            //Whole star
+                            print '<span class="fa fa-star profileStar" aria-hidden="true"></span>';
+                        } else if($ratingval > $i-1 && $ratingval < $i) {
+                            //Half star
+                            print '<span class="fa fa-star-half-o profileStar" aria-hidden="true"></span>';
+                        } else {
+                            //Empty star
+                            print '<span class="fa fa-star-o profileStar" aria-hidden="true"></span>';
+                        }
+                    }
                 ?>
             </div>
         </div>
