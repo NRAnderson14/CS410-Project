@@ -21,6 +21,8 @@
             </div>
             <?php
         } else {
+            print '<div class="row align-left">';
+            $i = 1;
             foreach ($stmt as $res) {
                 if ($res['name2'] == 1) { //They have a company name
                     $landlord = $res['name1'];
@@ -28,14 +30,18 @@
                     $landlord = $res['name1'] . ' ' . $res['name2'];
                 }
                 ?>
-                <div class="row">
-                    <div class="large-4 columns">
-                        <p><?= $landlord ?></p>
-                        <p><a href="http://<?= $res['website'] ?>"><?= $res['website'] ?></a></p>
-                    </div>
+                <div class="large-4 columns text-center card">
+                    <p><?= $landlord ?></p>
+                    <p><a href="http://<?= $res['website'] ?>"><?= $res['website'] ?></a></p>
                 </div>
                 <?php
+                if($i % 3 == 0) {
+                    print '</div>';
+                    print '<div class="row align-left">';
+                }
+                $i++;
             }
+            print '</div>';
         }
     }
 ?>

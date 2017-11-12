@@ -20,18 +20,26 @@
             </div>
             <?php
         } else {
+            ?>
+            <div class="row align-left">
+            <?php
+            $i = 1;
             foreach ($stmt as $res) {
                 ?>
-                <div class="row">
-                    <div class="large-4 columns">
+                    <div class="large-4 columns text-center card">
                         <p><?= $res['fname'] . ' ' . $res['lname'] ?></p>
-                        <p>
-                            <a href="<?= $path . 'users/tenantprofile.php?user=' . $res['username'] ?>"><?= $res['fname'] ?>
-                                's Profile</a></p>
+                        <div class="">
+                            <p><a href="<?= $path . 'users/tenantprofile.php?user=' . $res['username'] ?>"><?= $res['fname'] ?>'s Profile</a></p>
+                        </div>
                     </div>
-                </div>
                 <?php
+                if($i % 3 == 0) {
+                    print '</div>';
+                    print '<div class="row align-left">';
+                }
+                $i++;
             }
+            print '</div>';
         }
     }
 ?>

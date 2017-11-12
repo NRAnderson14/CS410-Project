@@ -28,4 +28,16 @@
 	$(document).foundation();
 	</script>
 	<script src=<?php print($path . "js/notification.js") ?> ></script>
+        <?php
+            $currpath = $_SERVER['REQUEST_URI'];
+
+            $currpage = substr($currpath, strrpos($currpath, '/')+1, strlen($currpath)-strrpos($currpath, '.php')+3);
+            //if user is a landlord, we are on a property page, and they own the property,
+            //  enable editing the page
+            if(isset($user_owns_property)) {
+                if($user_owns_property) {
+                    print "<script src=\"{$path}js/update_property.js\"></script>";
+                }
+            }
+        ?>
 </html>

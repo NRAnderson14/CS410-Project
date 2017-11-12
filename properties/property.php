@@ -1,6 +1,6 @@
 <?php
 	$path = "../";
-	include $path."header.php";
+	include $path . "header.php";
 	$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
 	if(isset($_GET['id'])){
 		$property_id=$_GET['id'];
@@ -87,6 +87,12 @@
     $ratingval = round($ratingval);
     $ratingval = $ratingval / 2.0;
 
+    if($_SESSION['username'] == $landlord_username) {
+        $user_owns_property = true;
+    } else {
+        $user_owns_property = false;
+    }
+
 	?>
 	<div class="upperBackground"></div>
 	<div class="row text-center" id="profileHeader">
@@ -105,13 +111,11 @@
 			<h6 id="userName">Current Landlord:</h6>
 			<h4 id="userName"><?= $landlord ?></h4>
 				<?php
-					if($is_available == 1){
-						print "<h5 style='color: green; font-weight: bold;'>AVAILABLE FOR RENT</h5>";
-					}elseif($is_available == 0){
-						print "<h5 style='color: red; font-weight: bold;'>UNAVAILABLE FOR RENT</h5>";
-				?>
-				<?php
-					}
+                    if ($is_available == 1) {
+                        print '<h5 style="color: green; font-weight: bold;" class="landlord-editable value-outer-avail"><span class="avail">AVAILABLE</span> FOR RENT</h5>';
+                    } elseif ($is_available == 0) {
+                        print '<h5 style="color: red; font-weight: bold;" class="landlord-editable value-outer-avail"><span class="avail">UNAVAILABLE</span> FOR RENT</h5>';
+                    }
 				?>
 		</div>
 	</div>
@@ -162,13 +166,13 @@
 	</div>
 	<div class="row column" style="text-align: center; margin-top: 0px;">
 		<div class="small-4 columns">
-			<p><i class="fa fa-money logIcon"></i> $<?=$price?></p>
+            <p class="landlord-editable value-outer-price"><i class="fa fa-money logIcon"></i> $<span class="price"><?=$price?></span></p>
 		</div>
 		<div class="small-4 columns">
-			<p><i class="fa fa-bed logIcon"></i> <?=$bedNum?> <?=$bed?></p>
+            <p class="landlord-editable value-outer-bed"><i class="fa fa-bed logIcon"></i> <span class="bed"><?=$bedNum?></span> <?=$bed?></p>
 		</div>
 		<div class="small-4 columns">
-			<p><i class="fa fa-bath logIcon"></i> <?=$bathNum?> <?=$bath?></p>
+            <p class="landlord-editable value-outer-bath"><i class="fa fa-bath logIcon"></i> <span class="bath"><?=$bathNum?></span> <?=$bath?></p>
 		</div>
 		<hr>
 	</div>
@@ -201,23 +205,23 @@
 			<table>
 				<tr>
 					<td><i class="fa fa-tint logIcon"></i> Water:</td>
-					<td><?=$water_included?></td>
+					<td class="landlord-editable value-outer-water"><span class="water"><?=$water_included?></span></td>
 				</tr>
 				<tr>
 					<td><i class="fa fa-bolt logIcon"></i> Electricity:</td>
-					<td><?=$electricity_included?></td>
+					<td class="landlord-editable value-outer-elec"><span class="elec"><?=$electricity_included?></span></td>
 				</tr>
 				<tr>
 					<td><i class="fa fa-fire logIcon"></i> Heat:</td>
-					<td><?=$heat_included?></td>
+                    <td class="landlord-editable value-outer-heat"><span class="heat"><?=$heat_included?></span></td>
 				</tr>
 				<tr>
 					<td><i class="fa fa-trash logIcon"></i> Trash:</td>
-					<td><?=$trash_included?></td>
+                    <td class="landlord-editable value-outer-trash"><span class="trash"><?=$trash_included?></span></td>
 				</tr>
 				<tr>
 					<td><i class="fa fa-car logIcon"></i> Parking:</td>
-					<td><?=$parking?></td>
+                    <td class="landlord-editable value-outer-parking"><span class="parking"><?=$parking?></span></td>
 				</tr>
 			</table>
 			</div>
@@ -252,40 +256,14 @@
 		</div>
 	</div>
 	</div>
-	<!--
-	<div class="row" style="margin-top: 20px;">
-	
-	<p>address: <?=$address?></p>
-	<p>price: <?=$price?></p>
-	<p>landlord: <?=$landlord?></p>
-	<p>is_available: <?=$is_available?></p>
-	<p>beds: <?=$beds?></p>
-	<p>baths: <?=$baths?></p>
-	<p>water_included: <?=$water_included?></p>
-	<p>electricity_included: <?=$electricity_included?></p>
-	<p>heat_included: <?=$heat_included?></p>
-	<p>trash_included: <?=$trash_included?></p>
-	<p>features: <?=$features?></p>
-	<p>parking: <?=$parking?></p>
-	</div>
-	-->
+    <div id="#burner">
+        <p class="invisible"></p>
+    </div>
+
 	<script>
       $(document).foundation();
     </script>
-	
-	
-	
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 <?php
