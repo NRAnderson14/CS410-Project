@@ -78,7 +78,7 @@
     $img = $imgs[0]['image_url'];
 	
 	//Get landlord rating
-    $rating_stmt = $db -> prepare('SELECT AVG(rating) AS rating FROM landlord_ratings WHERE landlord = :user;');
+    $rating_stmt = $db -> prepare('SELECT AVG(user_rating) AS rating FROM landlord_ratings WHERE username = :user;');
     $rating_stmt -> execute(['user' => $landlord_username]);
 
     $rating = $rating_stmt -> fetch();
