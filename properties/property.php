@@ -1,6 +1,9 @@
 <?php
 	$path = "../";
 	include $path . "header.php";
+	if(!isset($_SESSION)){
+		session_start();
+	}
 	$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
 	if(isset($_GET['id'])){
 		$property_id=$_GET['id'];
@@ -87,12 +90,13 @@
     $ratingval = round($ratingval);
     $ratingval = $ratingval / 2.0;
 
-    if($_SESSION['username'] == $landlord_username) {
-        $user_owns_property = true;
-    } else {
-        $user_owns_property = false;
-    }
-
+	if(isset($_SESSION['username'])){
+		if($_SESSION['username'] == $landlord_username){
+			print "You are on your property page.";
+		}
+	}else{
+		print "Not on your property page.";
+	}
 	?>
 	<div class="upperBackground"></div>
 	<div class="row text-center" id="profileHeader">

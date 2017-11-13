@@ -8,5 +8,5 @@ $(document).ready(function() {
 		var badge = document.getElementById("notify-count").innerHTML = "";
 		document.getElementById("notify-count").classList.remove("badge");
 		document.getElementById("notify-count").classList.remove("alert");
-	});
+	});	
 });

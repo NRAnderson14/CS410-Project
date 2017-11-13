@@ -22,7 +22,7 @@
 					<a class='main-logo hide-for-large' href='<?=$path?>'>Rent Sm<span class='fa fa-home'></span>rt</a>
 					<a class='show-for-large' style='margin-left: 50px;' href='<?=$path?>'>Rent Sm<span class='fa fa-home'></span>rt</a>
 				</div>
-				<div class='title-bar-right' style='margin-right: 20px;'>
+				<div class='title-bar-right' style='margin-right: 20px; z-index: 2;'>
 				
 					<?php
 					if(isset($_SESSION["is_auth"])){
@@ -34,10 +34,7 @@
 						
 				
 						
-						$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
-						$viewed = $db->query("SELECT sender, notification, type, viewed FROM notifications WHERE recipient = '$username' AND viewed = '0'");
-						$rowsCount = $db->query("SELECT FOUND_ROWS() as rowsCount") ->fetch()['rowsCount'];
-						$rows = $db->query("SELECT sender, notification, type FROM notifications WHERE recipient = '$username' AND viewed = '1'");
+						include "".$path."profile/notify.php";
 						print "<a id='findFriends' title='Search Friends' href='".$path."friends/find.php'><i class='fa fa-search logIcon'></i></a>";
                         //Based on the user type, take them to the right profile page
                         if($_SESSION['user_type'] == "tenant") {
