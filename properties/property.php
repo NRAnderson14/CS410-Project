@@ -94,15 +94,14 @@
 		if($_SESSION['username'] == $landlord_username){
 			print "You are on your property page.";
 		}
+        if($_SESSION['username'] == $landlord_username) {
+            $user_owns_property = true;
+        } else {
+            $user_owns_property = false;
+        }
 	}else{
 		print "Not on your property page.";
 	}
-
-    if($_SESSION['username'] == $landlord_username) {
-         $user_owns_property = true;
-    } else {
-        $user_owns_property = false;
-    }
 	?>
 	<div class="upperBackground"></div>
 	<div class="row text-center" id="profileHeader">
