@@ -81,7 +81,7 @@
     $img = $imgs[0]['image_url'];
 	
 	//Get landlord rating
-    $rating_stmt = $db -> prepare('SELECT AVG(user_rating) AS rating FROM landlord_ratings WHERE username = :user;');
+    $rating_stmt = $db -> prepare('SELECT AVG(rating) AS rating FROM landlord_ratings WHERE landlord = :user;');
     $rating_stmt -> execute(['user' => $landlord_username]);
 
     $rating = $rating_stmt -> fetch();
@@ -97,6 +97,12 @@
 	}else{
 		print "Not on your property page.";
 	}
+
+    if($_SESSION['username'] == $landlord_username) {
+         $user_owns_property = true;
+    } else {
+        $user_owns_property = false;
+    }
 	?>
 	<div class="upperBackground"></div>
 	<div class="row text-center" id="profileHeader">
