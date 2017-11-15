@@ -1,6 +1,7 @@
 :root {
 	--main_blue: rgb(66, 102, 218);
 	--main_grey: rgb(39, 39, 39);
+	--rated_yellow: rgb(244, 217, 64);
 }
 
 .logIcon {
@@ -266,6 +267,11 @@
 	display: inline-block;
 	font-size: 1.35em;
 	color: var(--main_blue);
+  }
+  .user-has-rated-stars {
+	  display: inline-block;
+	  font-size: 1.35em;
+	  color: var(--rated_yellow);
   }
   .item {
 	font-size: 14px;

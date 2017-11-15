@@ -14,6 +14,10 @@
 <?php
     $path = '../';
 	$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
+	if (!isset($_SESSION)) {
+        session_start();
+    }
+	$username = $_SESSION['username'];
   //Original
   //    if(isset($_POST['search'])){
   //  	   $search = $_POST['search'];
@@ -76,6 +80,25 @@
                 $imgs_stmt -> execute(['id' => $property_id]);
                 $imgs = $imgs_stmt -> fetch(PDO::FETCH_ASSOC);
                 $img = $imgs['image_url'];
+
+                $property_rating_stmt = $db -> prepare('SELECT AVG(rating) AS rating FROM property_ratings WHERE property_id = :pid;');
+                $property_rating_stmt -> execute(['pid' => $property_id]);
+
+                $property_rating = $property_rating_stmt -> fetch();
+                $property_rating_val = $property_rating['rating'];
+                $property_rating_val = $property_rating_val * 2.0;
+                $property_rating_val = round($property_rating_val);
+                $property_rating_val = $property_rating_val / 2.0;
+
+                $user_has_rated_stmt = $db -> prepare('SELECT rating_tenant FROM property_ratings WHERE property_id = :pid AND rating_tenant = :user;');
+                $user_has_rated_stmt -> execute(['pid' => $property_id, 'user' => $username]);
+
+                $user_rated_results = $user_has_rated_stmt -> fetch();
+                if ($user_rated_results['rating_tenant'] != null) {
+                    $user_has_rated = true;
+                } else {
+                    $user_has_rated = false;
+                }
 		?>
 		<div class="column">
 			<div class="myCard">
@@ -83,13 +106,32 @@
 					<h5 class="propertyTitle" ><?=$address?></h5>
 					<img src="<?=$img?>" class="thumbnail propertyImages" alt="">
 					<div class="card-section">
-						<!-- Star Rating still needs to be generated dinamically-->
-						<div class="stars">
-							<span class="fa fa-star" aria-hidden="true"></span>
-							<span class="fa fa-star" aria-hidden="true"></span>
-							<span class="fa fa-star" aria-hidden="true"></span>
-							<span class="fa fa-star-half-o" aria-hidden="true"></span>
-							<span class="fa fa-star-o" aria-hidden="true"></span>
+                        <?php
+                        if ($user_has_rated) {
+                            print '<div class="row user-has-rated-stars">';
+                            $star_color = "#f4d940";
+                        } else {
+                            print '<div class="row stars">';
+                            $star_color = "";
+                        }
+
+                        if ($property_rating_val == 0) {
+                            print '<h4>No ratings yet</h4>';
+                        } else {
+                            for ($i = 1.0; $i <= 5.0; $i += 1.0) {
+                                if ($property_rating_val > $i || $property_rating_val == $i) {
+                                    //Whole star
+                                    print '<span class="fa fa-star profileStar" aria-hidden="true" style="color: ' . $star_color . '"></span>';
+                                } else if ($property_rating_val > $i - 1 && $property_rating_val < $i) {
+                                    //Half star
+                                    print '<span class="fa fa-star-half-o profileStar" aria-hidden="true" style="color: ' . $star_color . '"></span>';
+                                } else {
+                                    //Empty star
+                                    print '<span class="fa fa-star-o profileStar" aria-hidden="true" style="color: ' . $star_color . '"></span>';
+                                }
+                            }
+                        }
+                        ?>
 						</div>
 						<p class="price" >$<?=$price?></p>
 						<hr>

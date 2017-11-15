@@ -99,9 +99,31 @@
         } else {
             $user_owns_property = false;
         }
-	}else{
-		print "Not on your property page.";
 	}
+
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    $username = $_SESSION['username'];
+
+    $property_rating_stmt = $db -> prepare('SELECT AVG(rating) AS rating FROM property_ratings WHERE property_id = :pid;');
+    $property_rating_stmt -> execute(['pid' => $property_id]);
+
+    $property_rating = $property_rating_stmt -> fetch();
+    $property_rating_val = $property_rating['rating'];
+    $property_rating_val = $property_rating_val * 2.0;
+    $property_rating_val = round($property_rating_val);
+    $property_rating_val = $property_rating_val / 2.0;
+
+    $user_has_rated_stmt = $db -> prepare('SELECT rating_tenant FROM property_ratings WHERE property_id = :pid AND rating_tenant = :user;');
+    $user_has_rated_stmt -> execute(['pid' => $property_id, 'user' => $username]);
+
+    $user_rated_results = $user_has_rated_stmt -> fetch();
+    if ($user_rated_results['rating_tenant'] != null) {
+        $user_has_rated = true;
+    } else {
+        $user_has_rated = false;
+    }
 	?>
 	<div class="upperBackground"></div>
 	<div class="row text-center" id="profileHeader">
@@ -117,6 +139,33 @@
 			<div class="show-for-large">
 				<a href=""><img style="margin-top: -40px;" src="<?= $path . $img ?>" alt="Profile Picture" id="profilePicture"></a>
 			</div>
+            <?php
+            if ($user_has_rated) {
+                print '<div class="row user-has-rated-stars">';
+                $star_color = "#f4d940";
+            } else {
+                print '<div class="row stars">';
+                $star_color = "";
+            }
+
+            if ($property_rating_val == 0) {
+                print '<h4>No ratings yet for this property</h4>';
+            } else {
+                for ($i = 1.0; $i <= 5.0; $i += 1.0) {
+                    if ($property_rating_val > $i || $property_rating_val == $i) {
+                        //Whole star
+                        print '<span class="fa fa-star profileStar" aria-hidden="true" style="color: ' . $star_color . '"></span>';
+                    } else if ($property_rating_val > $i - 1 && $property_rating_val < $i) {
+                        //Half star
+                        print '<span class="fa fa-star-half-o profileStar" aria-hidden="true" style="color: ' . $star_color . '"></span>';
+                    } else {
+                        //Empty star
+                        print '<span class="fa fa-star-o profileStar" aria-hidden="true" style="color: ' . $star_color . '"></span>';
+                    }
+                }
+            }
+            ?>
+            </div>
 			<h6 id="userName">Current Landlord:</h6>
 			<h4 id="userName"><?= $landlord ?></h4>
 				<?php

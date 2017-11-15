@@ -9,6 +9,15 @@
     $stmt = $db -> prepare('SELECT profile_img_url, fname, lname FROM tenants WHERE username = :user;');
     $stmt -> execute(['user' => $username]);
     $usr_info = $stmt -> fetch();
+
+    $rating_stmt = $db -> prepare('SELECT AVG(user_rating) AS rating FROM tenant_ratings WHERE username = :user;');
+    $rating_stmt -> execute(['user' => $username]);
+
+    $rating = $rating_stmt -> fetch();
+    $ratingval = $rating['rating'];
+    $ratingval = $ratingval * 2.0;
+    $ratingval = round($ratingval);
+    $ratingval = $ratingval / 2.0;
 ?>
 
 <main>
@@ -36,11 +45,20 @@
                 </div>
                 <div class="profileRating">
                         <h2 class="yourRating">Your Rating</h2>
-                        <span class="fa fa-star profileStar" aria-hidden="true"></span>
-                        <span class="fa fa-star profileStar" aria-hidden="true"></span>
-                        <span class="fa fa-star profileStar" aria-hidden="true"></span>
-                        <span class="fa fa-star-half-o profileStar" aria-hidden="true"></span>
-                        <span class="fa fa-star-o profileStar" aria-hidden="true"></span>
+                    <?php
+                    for($i = 1.0; $i <= 5.0; $i += 1.0) {
+                        if($ratingval > $i || $ratingval == $i) {
+                            //Whole star
+                            print '<span class="fa fa-star profileStar" aria-hidden="true"></span>';
+                        } else if($ratingval > $i-1 && $ratingval < $i) {
+                            //Half star
+                            print '<span class="fa fa-star-half-o profileStar" aria-hidden="true"></span>';
+                        } else {
+                            //Empty star
+                            print '<span class="fa fa-star-o profileStar" aria-hidden="true"></span>';
+                        }
+                    }
+                    ?>
                 </div>
         </div>
             <div id="customFeed" class="column large-4">
