@@ -28,20 +28,68 @@
     $propertiesPerPage = 18;
     $startPage = isset($_GET['startPage']) ? (int)$_GET['page'] : 1;
     $startPage = ($startPage > 1) ? ($startPage * $propertiesPerPage) - $propertiesPerPage : 0;
+
 	if(isset($_POST['city']) || isset($_POST['state'])){
 		$city = $_POST['city'];
 		$state = $_POST['state'];
 		$rows = $db->query("SELECT SQL_CALC_FOUND_ROWS
                                   property_id, address, monthly_cost, landlord, state, country
-                                  FROM `properties` 
+                                  FROM `properties`
                                   WHERE city LIKE '%$city%'
 								  OR state LIKE '%$state%';");
 	}
-  	if(isset($_POST['search'])){
+
+
+  if(isset($_POST['priceMin'])){
+    $priceMin = $_POST['priceMin'];
+  }
+  if(isset($_POST['priceMax'])){
+    $priceMax = $_POST['priceMax'];
+  }
+
+  if(isset($_POST['numBeds']) && isset($_POST['numBedsSecond'])){
+    if($_POST['numBeds'] > 0){
+    $numBeds = $_POST['numBeds'];
+    $numBedsSecond = $_POST['numBeds'];
+}else{
+  $numBeds = 0;
+  $numBedsSecond = 10;
+}}
+
+if(isset($_POST['numBaths']) && isset($_POST['numBathsSecond'])){
+  if($_POST['numBaths'] > 0){
+  $numBaths = $_POST['numBaths'];
+  $numBathsSecond = $_POST['numBaths'];
+}else{
+$numBaths = 0;
+$numBathsSecond = 10;
+}}
+
+  if(isset($_POST['search'])){
+    $search = $_POST['search'];
+    $rows = $db->query("SELECT SQL_CALC_FOUND_ROWS
+                                           property_id, address, monthly_cost, landlord, state, country
+                                           FROM `properties`
+                                           WHERE (monthly_cost >= $priceMin AND monthly_cost <= $priceMax)
+                                           AND (beds >= $numBeds AND beds <= $numBedsSecond)
+                                           AND (baths >= $numBaths AND baths <= $numBathsSecond)
+                                           AND (city LIKE '%$search%'
+                                           OR state LIKE '%$search%'
+                                           OR address LIKE '%$search%'
+                                           OR country LIKE '%$search%'
+                                           OR monthly_cost LIKE '%$search%'
+                                           OR landlord LIKE '%$search%'
+                                           OR CONCAT(city, ', ', state) LIKE '%$search%'
+                                           OR CONCAT(city, ' ', state) LIKE '%$search%')
+                                           LIMIT $startPage, $propertiesPerPage;");
+  }
+
+/* original serach query ///
+  if(isset($_POST['search'])){
   	   $search = $_POST['search'];
 	   $rows = $db->query("SELECT SQL_CALC_FOUND_ROWS
                                   property_id, address, monthly_cost, landlord, state, country
-                                  FROM `properties` 
+                                  FROM `properties`
                                   WHERE city LIKE '%$search%'
 								  OR state LIKE '%$search%'
 								  OR address LIKE '%$search%'
@@ -51,7 +99,8 @@
 								  OR CONCAT(city, ', ', state) LIKE '%$search%'
 								  OR CONCAT(city, ' ', state) LIKE '%$search%'
 								  LIMIT $startPage, $propertiesPerPage;");
-  	}
+  	}*/
+
   $rowsCount = $db->query("SELECT FOUND_ROWS() as rowsCount") ->fetch()['rowsCount'];
   $totalPage = (int)($rowsCount / $propertiesPerPage);
   if ($totalPage > 30){

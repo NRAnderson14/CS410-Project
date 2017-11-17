@@ -36,38 +36,38 @@
 		<div class="row small-8 medium-8 large-8 small-centered medium-centered large-centered columns small-uncollapse">
 			<div class="small-3 columns">
 				<label>Min Price
-					<input type="text" placeholder="Min Price" />
+					<input id="minSearch" type="text" name='priceMin' placeholder="Min Price" />
 				</label>
 			</div>
 			<div class="small-3 columns">
 				<label>Max Price
-					<input type="text" placeholder="Max Price" />
+					<input id="maxSearch" type="text" name='priceMax' placeholder="Max Price" />
 				</label>
 			</div>
 			<div class="small-3 columns">
 				<label>Number of Beds
-					<select>
+					<select id="numBeds" name='numBeds'>
 						<option value="anyBed">Any</option>
-						<option value="oneBed">1 Bed</option>
-						<option value="twoBed">2 Bed</option>
-						<option value="threeBed">3 Bed</option>
-						<option value="fourBed">4 Bed</option>
+						<option value="1">1 Bedroom</option>
+						<option value="2">2 Bedroom</option>
+						<option value="3">3 Bedroom</option>
+						<option value="4">4 Bedroom</option>
 					</select>
 				</label>
 			</div>
 			<div class="small-3 columns">
 				<label>Number of Baths
-					<select>
+					<select id="numBaths" name='numBaths'>
 						<option value="anyBath">Any</option>
-						<option value="oneBath">1 Bath</option>
-						<option value="twoBath">2 Bath</option>
-						<option value="threeBath">3 Bath</option>
-						<option value="fourBath">4 Bath</option>
+						<option value="1">1 Bathroom</option>
+						<option value="2">2 Bathroom</option>
+						<option value="3">3 Bathroom</option>
+						<option value="4">4 Bathroom</option>
 					</select>
 				</label>
 			</div>
 		</div>
-	</form>
+	 </form>
 	<hr>
 	<div class="load">
 		<!--
