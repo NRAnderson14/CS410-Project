@@ -18,7 +18,9 @@
     $ratingval = $ratingval * 2.0;
     $ratingval = round($ratingval);
     $ratingval = $ratingval / 2.0;
+		$path = "";
 ?>
+	<script src=<?php print($path . "js/search.js") ?> ></script>
 
 <main>
     <div class="topSpace"></div>
@@ -157,9 +159,80 @@
 						<p><a href="<?= $path ?>budget/budgetIndex.php">Budget</a></p>
 				</div>
 		</div>
+		<div class="row">
+				<div class="large-12 columns">
+					<p><a data-open="settings-modal">What can I pay for rent?</a></p>
+					<div class="reveal" id="settings-modal" data-reveal>
+						<main style>
+							<div class="row">
+	  					<div class="small-12 medium-12 large-12 small-centered medium-centered large-centered columns">
+	    	<h4 align="center">Monthly Rent Estimation</h4>
+	  </div>
+							</div>
 
+							<form id="modalForm" class="signForm">
+								<div class="row">
+	  						<div class="small-10 medium-6 large-4 small-centered medium-centered large-centered columns">
+	    				<label>Monthly Income
+	      	<input type="text" name="monthIncome" id="monthIncome" placeholder="Monthly Income" required>
+	    	</label>
+	  	</div>
+		</div>
+		<div class="row">
+	  	<div class="small-10 medium-6 large-4 small-centered medium-centered large-centered columns">
+	    	<label>Internet Cost
+	      	<input type="number" step="5" name="internetCost" id="internetCost" placeholder="Cost of Internet in $/per month (not required)" value=40>
+	    	</label>
+	  </div>
+	</div>
+
+	<div class="row">
+	  <div class="small-10 medium-6 large-4 small-centered medium-centered large-centered columns">
+	    <label>Grocery Spending
+	      <input type="number" step="5" name="groceryCost" id="groceryCost" placeholder="Cost of Groceries in $/per month (not required)" value=125>
+	    </label>
+	  </div>
+	</div>
+
+	<div class="row">
+	  <div class="small-10 medium-6 large-4 small-centered medium-centered large-centered columns">
+	    <label>Other Bills
+	      <input type="number" step ="5" name="otherBills" id="otherBills" placeholder="Other Bills in $/per month (not required)" value=100>
+	    </label>
+	  </div>
+	</div>
+
+	<div class="row">
+	  <div class="small-10 medium-6 large-4 small-centered medium-centered large-centered columns">
+	    <input id="monthlyCalculate" type="button" class="button expanded" name="submit" value="Calculate" onclick="myAlert()">
+	  </div>
+	</div>
+	<div class="row">
+	</div>
+	</form>
+	</main>
+
+	<button class="close-button" data-close aria-label="Close modal" type="button">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+</div>
+</div>
 </main>
+
 <script src="../js/confirmfriend.js" type="text/javascript"></script>
+<script>
+function myAlert(){
+	var monthlyIncome = document.getElementById("monthIncome").value;
+	var internetCost = document.getElementById("internetCost").value;
+	var groceryCost = document.getElementById("groceryCost").value;
+	var otherBills= document.getElementById("otherBills").value;
+
+	var formm = document.getElementById("modalForm");
+	formm.style.display = "none";
+
+}
+</script>
 <?php
 	include '../footer.php';
 ?>
