@@ -156,17 +156,13 @@
 
 		<div class="row">
 				<div class="large-12 columns">
-						<p><a href="<?= $path ?>budget/budgetIndex.php">Budget</a></p>
-				</div>
-		</div>
-		<div class="row">
-				<div class="large-12 columns">
 					<p><a data-open="settings-modal">What can I pay for rent?</a></p>
 					<div class="reveal" id="settings-modal" data-reveal>
-						<main style>
+						<main>
 							<div class="row">
 	  					<div class="small-12 medium-12 large-12 small-centered medium-centered large-centered columns">
 	    	<h4 align="center">Monthly Rent Estimation</h4>
+				<hr>
 	  </div>
 							</div>
 
@@ -204,12 +200,16 @@
 
 	<div class="row">
 	  <div class="small-10 medium-6 large-4 small-centered medium-centered large-centered columns">
-	    <input id="monthlyCalculate" type="button" class="button expanded" name="submit" value="Calculate" onclick="myAlert()">
+	    <input id="monthlyCalculate" type="button" class="button expanded" name="submit" value="Calculate" onclick="myAlert()" onclick="myCalc()">
 	  </div>
 	</div>
 	<div class="row">
 	</div>
 	</form>
+
+	<div id="calculated">
+		<p align="center" id="yuh"></p>
+	</div>
 	</main>
 
 	<button class="close-button" data-close aria-label="Close modal" type="button">
@@ -221,18 +221,25 @@
 </main>
 
 <script src="../js/confirmfriend.js" type="text/javascript"></script>
+
 <script>
+var formmm = document.getElementById("calculated");
+formmm.style.display = "none";
 function myAlert(){
 	var monthlyIncome = document.getElementById("monthIncome").value;
 	var internetCost = document.getElementById("internetCost").value;
 	var groceryCost = document.getElementById("groceryCost").value;
 	var otherBills= document.getElementById("otherBills").value;
 
+	var total = (monthlyIncome - internetCost - groceryCost - otherBills);
+
 	var formm = document.getElementById("modalForm");
 	formm.style.display = "none";
-
+	formmm.style.display ="block";
+	document.getElementById("yuh").innerHTML = "You can pay " + total + " per month for an apartment";
 }
 </script>
+
 <?php
 	include '../footer.php';
 ?>
