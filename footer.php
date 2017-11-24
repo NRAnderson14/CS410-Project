@@ -2,15 +2,15 @@
 			<div class="small-up-1 medium-up-3 align-center">
 				<div class="column foot">
 				<h4 class="footer-header">Contact Info</h4>
-				<a href=""><p>some text</p></a>
-				<a href=""><p>some text</p></a>
-				<a href=""><p>some text</p></a>
+				<a href=""><p>Email</p></a>
+				<a href=""><p>Phone</p></a>
+				<a href=""><p>Support</p></a>
 				</div>
 				<div class="column mid foot">
-				<h4 id="footer-two" class="footer-header">Other Links</h4>
-				<a href=""><p>some text</p></a>
-				<a href=""><p>some text</p></a>
-				<a href=""><p>some text</p></a>
+				<h4 id="footer-two" class="footer-header">Other</h4>
+				<a href=""><p>Privacy Policy</p></a>
+				<p>Winona, MN</p>
+				<p>2017 Rent Smart</p>
 				</div>
 				<div class="column foot">
 				<h4 class="footer-header">Social Media</h4>
@@ -21,7 +21,7 @@
 			</div>
 		</footer>
 		</div>
-		
+
 	</div>
 </div>
 	<script>
