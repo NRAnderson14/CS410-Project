@@ -22,26 +22,23 @@ $(document).ready(function() {
 				}
 					if(priceMin == ""){
 						priceMin = 0;
+					}
 					if( priceMax == ""){
 							priceMax = 10000;
 						}
-
 					if(numBeds =="anyBed"){
 						numBeds = 0;
 					}
-
 					if(numBaths =="anyBath"){
 						numBaths = 0;
 					}
-
+					if(priceMin != "" && priceMax != "" && numBeds != "anyBed" && numBaths != "anyBath"){
 						$(".load").load("search/query_search.php", {"search" : search, "priceMin" : priceMin, "priceMax" : priceMax,
 						"numBeds" : numBeds, "numBedsSecond" : numBedsSecond, "numBaths" : numBaths, "numBathsSecond" : numBathsSecond});
 					}else{
 						$(".load").load("search/query_search.php", {"search" : search, "priceMin" : priceMin, "priceMax" : priceMax,
 						"numBeds" : numBeds, "numBedsSecond" : numBedsSecond, "numBaths" : numBaths, "numBathsSecond" : numBathsSecond});
-					}
-				});
-
+					}});
 
 	$("#searchBar").on('keypress', function(e){
 		if(e.which === 13){
@@ -57,27 +54,23 @@ $(document).ready(function() {
 			}
 				if(priceMin == ""){
 					priceMin = 0;
+				}
 				if( priceMax == ""){
 						priceMax = 10000;
 					}
-
 				if(numBeds =="anyBed"){
 					numBeds = 0;
 				}
-
 				if(numBaths =="anyBath"){
 					numBaths = 0;
 				}
-
+				if(priceMin != "" && priceMax != "" && numBeds != "anyBed" && numBaths != "anyBath"){
 					$(".load").load("search/query_search.php", {"search" : search, "priceMin" : priceMin, "priceMax" : priceMax,
 					"numBeds" : numBeds, "numBedsSecond" : numBedsSecond, "numBaths" : numBaths, "numBathsSecond" : numBathsSecond});
 				}else{
 					$(".load").load("search/query_search.php", {"search" : search, "priceMin" : priceMin, "priceMax" : priceMax,
 					"numBeds" : numBeds, "numBedsSecond" : numBedsSecond, "numBaths" : numBaths, "numBathsSecond" : numBathsSecond});
-				}
-
-		}
-	});
+				}}});
 
 	$(function(){
 		$(document).on( 'scroll', function(){

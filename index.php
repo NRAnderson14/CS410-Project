@@ -36,12 +36,12 @@
 		<div class="row small-8 medium-8 large-8 small-centered medium-centered large-centered columns small-uncollapse">
 			<div class="small-3 columns">
 				<label>Min Price
-					<input id="minSearch" type="text" name='priceMin' placeholder="Min Price" />
+					<input id="minSearch" type="number" name='priceMin' placeholder="Min Price" step="10" />
 				</label>
 			</div>
 			<div class="small-3 columns">
 				<label>Max Price
-					<input id="maxSearch" type="text" name='priceMax' placeholder="Max Price" />
+					<input id="maxSearch" type="number" name='priceMax' placeholder="Max Price" step="10" />
 				</label>
 			</div>
 			<div class="small-3 columns">
