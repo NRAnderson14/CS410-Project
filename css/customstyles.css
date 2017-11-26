@@ -121,35 +121,40 @@
 
 /* USER PROFILE */
 .topSpace {
-	margin: 140px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
 }
 #profileBox {
-	margin: 0px 0px 40px 0px;
+	margin: 0px 0px 0px 0px;
 	/* width: 650px; */
-	height: 260px;
+	/* height: 360px; */
+	/* padding: 15px; */
 	background: #FBFBFB;
 	border: 1px solid rgba(151,151,151,0.25);
 	display: inline-block;
 }
 .informationBox {
 	/* background-color: blue; */
-	display: inline-block;
-	margin-left: 10px;
+	display: block;
+	/* margin-left: 10px; */
 }
 .profileRating {
 	/* color: red; */
-	display: inline-block;
-	float: right;
-	text-align: right;
+	display: block;
+	/* float: right; */
+	/* text-align: right; */
 }
 .yourRating {
 	color: #4A4A4A;
-	padding: 21px 5px;
-	font-size: 24px;
+	/* padding: 21px 5px; */
+	font-size: 14px;
 }
-.profileStar, .socialBox {
+.profileStar {
 	font-size: 28px;
 	color: var(--main_blue);
+}
+
+.socialBox {
+	font-size: 20px;
 }
 #customFeed {
 	/* width: 650px; */
@@ -157,15 +162,16 @@
 	padding: 15px;
 	background: #FBFBFB;
 	border: 1px solid rgba(151,151,151,0.25);
-	display: inline-block;
+	/* display: inline-block; */
 }
 #profilePicture {
-	margin-top: -120px;
-	margin-left: 10px;
+	margin: 0px auto;
+	margin-top: -50px;
 	background-color: grey;
 	color: grey;
 	height: 200px;
 	width: 200px;
+	display: block;
 	/* this "crops" into a square */
 	object-fit: cover;
 	border-radius: 100px;
@@ -176,14 +182,14 @@
 
 .upperBackground {
 	background-color:rgb(44, 44, 44);
-	height: 180px;
+	/* height: 180px; */
 }
 
 #userName {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 900;
 	color: var(--main_grey);
-	font-size: 48px;
+	font-size: 22px;
 }
 .fa-facebook-official {color: #4469AF;}
 .fa-youtube-square {color:#FC0D1B;}
@@ -199,27 +205,46 @@
 }
 #changePic {
 	/* background-color:rgba(7, 7, 7, 0.6); */
-	width: 200px;
-	position: absolute;
+	width: 100%;
 	color: rgba(255, 255, 255, 0.897);
-	margin-top: 16px;
+	display: inline-block;
+	transform: translateY(-25px);
 	text-align: center;
-	margin-left: 5px;
+	margin-top: -50px;
 	font-size: 20px;
 	opacity: 0;
 	transition: 200ms;
 	text-shadow:
-	-5px 0px 50px black,
-	5px 0px 50px black,
-	0px -5px 20px black;
+	-2px 0px 5px black,
+	2px 0px 5px black,
+	0px 0px 2px black;
 }
+
 #imageArea {
-	margin-top: -50px;
-	display: inline-block;
+	/* margin-top: -50px; */
+	/* display: inline-block; */
 }
 #imageArea:hover #changePic{
 	opacity: 1;
 	transition: 200ms;
+}
+
+.profileContent {
+
+}
+
+.sideTitle {
+	font-weight: 400;
+	font-size: 18px;
+	transition: 300ms;
+}
+.sideTitle:hover {
+	color: var(--main_blue);
+	transform: translateY(-2px);
+	transition: 300ms;
+}
+.collapsable {
+	
 }
 
 /* Result from query properties */
@@ -376,7 +401,7 @@ main{
 	background: #33adff;
 }
 .button-badge {
-	background-color: $primary-color;
+	background-color: var(--main_blue);
 	text-decoration: none;
 	padding: 1rem 1.5rem;
 	position: relative;
@@ -387,7 +412,7 @@ main{
 	color: white;
 }
 .button-badge:hover{
-	color: black;
+	color: var(--main_grey);
 }
 .badge {
   	position: absolute;
@@ -412,7 +437,8 @@ main{
 	text-shadow: 2px 1px 0.5px rgba(43, 69, 153, 0.8);
 }
 .title-bar a:hover{
-	color: black;
+	color: var(--main_grey);
+
 }
 .menu-icon{
 	color: black;
