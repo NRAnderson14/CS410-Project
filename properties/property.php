@@ -104,7 +104,9 @@
     if (!isset($_SESSION)) {
         session_start();
     }
-    $username = $_SESSION['username'];
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+    }
 
     $property_rating_stmt = $db -> prepare('SELECT AVG(rating) AS rating FROM property_ratings WHERE property_id = :pid;');
     $property_rating_stmt -> execute(['pid' => $property_id]);
@@ -115,12 +117,16 @@
     $property_rating_val = round($property_rating_val);
     $property_rating_val = $property_rating_val / 2.0;
 
+    if (isset($_SESSION['username'])) {
     $user_has_rated_stmt = $db -> prepare('SELECT rating_tenant FROM property_ratings WHERE property_id = :pid AND rating_tenant = :user;');
     $user_has_rated_stmt -> execute(['pid' => $property_id, 'user' => $username]);
 
     $user_rated_results = $user_has_rated_stmt -> fetch();
     if ($user_rated_results['rating_tenant'] != null) {
         $user_has_rated = true;
+    } else {
+        $user_has_rated = false;
+    }
     } else {
         $user_has_rated = false;
     }
