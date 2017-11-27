@@ -35,10 +35,10 @@
                     <input type="submit" value="Change picture"  class="hide" >
                     <label id="changePic" class="fa fa-camera"><input id="pictureInput" class="hide" type="file" name="img" accept=".png, .jpg, .jpeg"></label>
                     </form>
-                    
+
                 </div>
 
-                
+
 
                 <div class="informationBox">
                     <h1 id="userName"><?= $usr_info['fname'] . ' ' . $usr_info['lname'] ?></h1>
@@ -70,9 +70,9 @@
                         <span class="fa fa-youtube-square" aria-hidden="true"></span>
                     </p>
                 </div>
-            
-       
-            
+
+
+
         <div class="profileContainer">
             <h4 class="sideTitle">Your Friends:</h4>
             <div class="collapsable">
@@ -92,14 +92,14 @@
                     }
                 ?>
                 </ul>
-             
+
                 </div>
         </div>
 
         <div class="profileContainer">
             <h4 class="sideTitle">Friend Requests</h4>
             <div class="collapsable">
-            
+
             <ul>
                 <?php
                     $requests = $db -> prepare('SELECT tenants.fname, tenants.lname, tenants.username
@@ -117,7 +117,7 @@
                     }
                 ?>
             </ul>
-          
+
             </div>
         </div>
 
@@ -143,14 +143,14 @@
                     }
                 ?>
             </ul>
-          
+
             </div>
         </div>
 
         <div class="profileContainer">
             <h4 class="sideTitle">Friend Requests</h4>
             <div class="collapsable">
-           
+
             <ul>
                 <?php
                     $requests = $db -> prepare('SELECT tenants.fname, tenants.lname, tenants.username
@@ -168,15 +168,15 @@
                     }
                 ?>
             </ul>
-           
+
             </div>
         </div>
-  
-
-       
 
 
-                
+
+
+
+
         </div>
             <div id="customFeed" class="column large-8">
                 <h3 id="customFeedTitle">News Feed</h3>
@@ -265,7 +265,7 @@
 
     <div class="row">
         <div class="large-12 columns">
-            <p><a href="<?= $path ?>friends/friendsearch.php">Find Friends</a></p>
+            <p><a href="<?= $path ?>../budget/roommate_manage/roommate_index.php">Roommate Manage</a></p>
         </div>
     </div>
 
