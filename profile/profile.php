@@ -328,7 +328,7 @@
 	</main>
 
 	<button class="close-button" data-close aria-label="Close modal" type="button">
-  <span aria-hidden="true">&times;</span>
+  <a href="javascript:history.go(0)">&times;</A>
 </button>
 </div>
 </div>
