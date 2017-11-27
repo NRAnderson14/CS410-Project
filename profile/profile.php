@@ -18,7 +18,11 @@
     $ratingval = $ratingval * 2.0;
     $ratingval = round($ratingval);
     $ratingval = $ratingval / 2.0;
-		$path = "";
+        $path = "";
+
+    if($usr_info['profile_img_url'] == "") {
+        $usr_info['profile_img_url'] = "images/placeholder.png";
+    }
 ?>
 	<script src=<?php print($path . "js/search.js") ?> ></script>
 
@@ -37,7 +41,6 @@
                     </form>
 
                 </div>
-
 
 
                 <div class="informationBox">
