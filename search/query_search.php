@@ -12,12 +12,14 @@
 }
 </style>
 <?php
+    $username = "";
     $path = '../';
 	$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
 	if (!isset($_SESSION)) {
         session_start();
+    } else {
+    $username = $_SESSION['username'];
     }
-	$username = $_SESSION['username'];
   //Original
   //    if(isset($_POST['search'])){
   //  	   $search = $_POST['search'];

@@ -30,7 +30,7 @@
         <div id="profileBox" class="column large-3">
 
                 <div id="imageArea">
-                <img src="<?= $path . $usr_info['profile_img_url'] ?>" alt="" id="profilePicture">
+                <img src="<?= "../" . $usr_info['profile_img_url'] ?>" alt="" id="profilePicture">
                 <form id="imageForm" action="add_picture.php" method="post" enctype="multipart/form-data">
                     <input type="submit" value="Change picture"  class="hide" >
                     <label id="changePic" class="fa fa-camera"><input id="pictureInput" class="hide" type="file" name="img" accept=".png, .jpg, .jpeg"></label>
