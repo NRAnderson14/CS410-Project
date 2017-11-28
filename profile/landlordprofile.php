@@ -25,7 +25,7 @@
                     <label id="changePic" class="fa fa-camera"><input id="pictureInput" class="hide" type="file" name="img" accept=".png, .jpg, .jpeg"></label>
                     <input type="submit" value="Change picture"  class="hide" >
                 </form>
-                <img src="<?= $path . $usr_info['profile_img_url'] ?>" alt="Profile Picture" id="profilePicture">
+                <img src="<?= $path . $usr_info['profile_img_url'] ?>" alt="" id="profilePicture">
             </div>
 
 
@@ -73,6 +73,8 @@
         </div>
     </div>
     <div>
+      <div class="row">
+        <div class="large-12 columns">
         <h6>Your properties:</h6>
         <ul>
             <?php
@@ -88,10 +90,17 @@
             ?>
         </ul>
     </div>
+  </div>
+</div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <p><a href="<?= $path ?>properties/property_creation.php">Create Property</a></p>
+        </div>
+    </div>
 
 </main>
 <script src="../js/confirmfriend.js" type="text/javascript"></script>
 <?php
 include '../footer.php';
 ?>
-
