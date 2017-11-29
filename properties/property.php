@@ -299,7 +299,10 @@
 		<div class="small-6 columns" style="border-left: 1px solid black;">
 		<div style="padding: 10px; border: 1px solid #ddd; background: #eee; max-width: 400px; min-width: 300px; margin: auto; border-radius: 7px;">
 		<form action="#" method="post">
-			<p>Contact Landlord</p>
+		
+			<p>Contact Landlord: <?=$landlord?></p>
+			<p>Email: <?=$email?></p>
+			<p>Phone: <a href="tel:123-123-1234"><?=$phone?></a></p>
 			<label>Name:
 			<input type="text" name="name" placeholder="Name">
 			</label>
@@ -318,7 +321,7 @@
 			<textarea name="message" rows="6" placeholder="I would like to know more about..."></textarea>
 			</label>
 			<div style="text-align: center;">
-			<input type="submit" style="width: 100px;" class="button extended landlord-contact-button" value="Send">
+			<input id="email-button" type="submit" style="width: 100px;" class="button extended landlord-contact-button" value="Send">
 			</div>
 		</form>
 		</div>
