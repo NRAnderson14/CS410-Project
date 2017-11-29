@@ -13,4 +13,16 @@ $(document).ready(function(){
 		setTimeout(location.reload.bind(location), 50);
 		// location.reload();
 	});
+	$("#post-text").on('keypress', function(e){
+		if(e.which === 13){
+			var value = $("#post-text").val();
+			if(value == ""){
+				
+			}else{
+				$("#post-load").load("newsFeed.php", {"username":username, "value":value});
+
+			}
+			setTimeout(location.reload.bind(location), 50);
+		}
+	});
 });

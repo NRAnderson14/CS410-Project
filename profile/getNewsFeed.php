@@ -73,7 +73,7 @@
 						</div>
 						<?php
 					}else if($count == 0 && $count2 > 0){
-						$no_friends = $db->query("SELECT * FROM news WHERE username = '$username'");
+						$no_friends = $db->query("SELECT * FROM news WHERE username = '$username' ORDER BY event_time DESC;");
 						foreach($no_friends as $p){
 							$u = $p['username'];
 							$news_text = $p['news_text'];
