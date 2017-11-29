@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'>
 	<head>
+
 		<title>Rent Smart</title>
 		<meta charset='utf-8'>
 		<link rel="stylesheet" href=<?php print($path . "css/font-awesome/css/font-awesome.min.css") ?>>
@@ -14,4 +15,5 @@
 		<script src=<?php print($path . "js/vendor/foundation.js") ?> ></script>
 		<script src=<?php print($path . "js/vendor/foundation.min.js") ?> ></script>
 		<script src=<?php print($path . "js/app.js") ?> ></script>
+		<link rel="shortcut icon" href=<?php print($path . "images/favicon.png")?> type="image/x-icon">
 	</head>

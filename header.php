@@ -17,6 +17,7 @@
 		<script src=<?php print($path . "js/vendor/foundation.min.js") ?> ></script>
 		<script src=<?php print($path . "js/app.js") ?> ></script>
 		<script src=<?php print($path . "js/submitPicture.js") ?> ></script>
+		<link rel="shortcut icon" href=<?php print($path . "images/favicon.png")?> type="image/x-icon">
 	</head>
 	<?php
 		include 'nav.php';
