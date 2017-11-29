@@ -45,7 +45,7 @@
 
         <div class="large-4 columns">
         <label>State
-          <select name="apartmentState">
+          <select name="statename">
 	<option value="AL">Alabama</option>
 	<option value="AK">Alaska</option>
 	<option value="AZ">Arizona</option>
@@ -159,7 +159,7 @@
         </select
       </label>
     </div>
-
+<!--------- -->
   <div class="large-4 column">
     <label>Water Included
       <select name="waterInclusion">
@@ -202,11 +202,11 @@
   <div class="large-4 column">
   <label>Parking
     <select name="parkingType">
-      <option value="onstreet">Street parking</option>
-      <option value="offstreet">Off-street parking</option>
-      <option value="garageParking">Garage parking</option>
-      <option value="privateParkingLot">Private Lot</option>
-      <option value="publicParkingLot">Public Lot</option>
+      <option value="on-street">On-street parking</option>
+      <option value="off-street">Off-street parking</option>
+      <option value="Garage parking">Garage parking</option>
+      <option value="Private parking lot">Private Lot</option>
+      <option value="Public parking lot">Public Lot</option>
     </select>
   </label>
 </div>
@@ -218,16 +218,14 @@
 		<div class="row">
 			<div class="small-10 medium-6 large-12 small-centered medium-centered large-centered columns">
         <div class="large-6 column">
-				<label>Exceptional features
-          <textarea rows="4" cols="20" name="exceptionalFeatures">
-            </textarea>
-				</label>
+        <label>Exceptional features
+          <input type="text" name="exceptionalFeatures" placeholder="extra features">
+        </label>
 			</div>
 
     <div class="large-6 column">
-    <label>Descriptive Keywords
-      <textarea rows="4" cols="20" name="keywords">
-        </textarea>
+    <label>Descriptive keywords
+      <input type="text" name="keywords" placeholder="search keywords">
     </label>
   </div>
 		</div>
