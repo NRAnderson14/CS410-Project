@@ -118,12 +118,17 @@
     $property_rating_val = $property_rating_val / 2.0;
 
     if (isset($_SESSION['username'])) {
-    $user_has_rated_stmt = $db -> prepare('SELECT rating_tenant FROM property_ratings WHERE property_id = :pid AND rating_tenant = :user;');
+    $user_has_rated_stmt = $db -> prepare('SELECT rating_tenant, rating FROM property_ratings WHERE property_id = :pid AND rating_tenant = :user;');
     $user_has_rated_stmt -> execute(['pid' => $property_id, 'user' => $username]);
 
     $user_rated_results = $user_has_rated_stmt -> fetch();
     if ($user_rated_results['rating_tenant'] != null) {
         $user_has_rated = true;
+        //If user has rated the property, use that instead of the average
+        $property_rating_val = $user_rated_results['rating'];
+        $property_rating_val = $property_rating_val * 2.0;
+        $property_rating_val = round($property_rating_val);
+        $property_rating_val = $property_rating_val / 2.0;
     } else {
         $user_has_rated = false;
     }

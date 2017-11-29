@@ -17,8 +17,11 @@
 	$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
 	if (!isset($_SESSION)) {
         session_start();
+        if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
+        }
     } else {
-    $username = $_SESSION['username'];
+        $username = $_SESSION['username'];
     }
   //Original
   //    if(isset($_POST['search'])){
@@ -141,12 +144,17 @@ $numBathsSecond = 10;
                 $property_rating_val = round($property_rating_val);
                 $property_rating_val = $property_rating_val / 2.0;
 
-                $user_has_rated_stmt = $db -> prepare('SELECT rating_tenant FROM property_ratings WHERE property_id = :pid AND rating_tenant = :user;');
+                $user_has_rated_stmt = $db -> prepare('SELECT rating_tenant, rating FROM property_ratings WHERE property_id = :pid AND rating_tenant = :user;');
                 $user_has_rated_stmt -> execute(['pid' => $property_id, 'user' => $username]);
 
                 $user_rated_results = $user_has_rated_stmt -> fetch();
                 if ($user_rated_results['rating_tenant'] != null) {
                     $user_has_rated = true;
+                    //Get the user's rating instead of the actual rating
+                    $property_rating_val = $user_rated_results['rating'];
+                    $property_rating_val = $property_rating_val * 2.0;
+                    $property_rating_val = round($property_rating_val);
+                    $property_rating_val = $property_rating_val / 2.0;
                 } else {
                     $user_has_rated = false;
                 }
