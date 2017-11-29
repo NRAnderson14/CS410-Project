@@ -33,7 +33,7 @@
     <!-- <div class="topSpace"></div> -->
     <div class="row">
 
-        <div id="profileBox" class="column large-3">
+        <div id="profileBox" class="column large-3" style="margin-top: 30px;">
 
                 <div id="imageArea">
                 <img src="<?= "../" . $usr_info['profile_img_url'] ?>" alt="" id="profilePicture">
@@ -365,7 +365,8 @@ function myAlert(){
 	document.getElementById("yuh").innerHTML = "You can pay " + total + " per month for an apartment";
 }
 </script>
-<label id="post-user" hidden><?=$username?></label>
+<label style="top:50px;" id="post-user" hidden><?=$username?></label>
+<script src="../js/notification.js"></script>
 <?php
 	include '../footer.php';
 ?>

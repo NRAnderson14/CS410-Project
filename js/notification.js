@@ -1,6 +1,6 @@
 $(document).ready(function() {
-	var user = document.getElementById("user-hidden").innerHTML;
-	var path = document.getElementById("path-hidden").innerHTML;
+	var user = $("#post-user").text();
+	var path = "../";
 	$("#user-hidden").hide();
 	$(".notification-count").click(function(){
 		var view = document.getElementById("notify-count").innerHTML;

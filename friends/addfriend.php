@@ -10,3 +10,8 @@
     $stmt = $db -> prepare('INSERT INTO friend_requests (sending_user, receiving_user)
                                       VALUES (:sending, :receiving);');
     $stmt -> execute(['sending' => $user_sending, 'receiving' => $user_receiving]);
+	
+	$stmt = $db -> prepare('INSERT INTO notifications (recipient, sender, notification, type, viewed)
+                                      VALUES (:recipient, :sender, "You have a friend request", "friend_request", "0");');
+    $stmt -> execute(['recipient' => $user_receiving, 'sender' => $user_sending]);
+	
