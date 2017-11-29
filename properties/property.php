@@ -379,7 +379,6 @@
 	<script>
       $(document).foundation();
     </script>
-    <script src="<?= $path ?>js/rate_property.js"></script>
 
 	
 	

@@ -28,10 +28,11 @@
 	$(document).foundation();
 	</script>
 	<script src=<?php print($path . "js/notification.js") ?> ></script>
-        <script src="<?= $path ?>js/rate_property.js"></script>
         <?php
 //            if (isset($user_has_rated))
-
+            if (isset($_SESSION['username'])) {
+                print '<script src="<?= $path ?>js/rate_property.js"></script>';
+            }
             $currpath = $_SERVER['REQUEST_URI'];
 
             $currpage = substr($currpath, strrpos($currpath, '/')+1, strlen($currpath)-strrpos($currpath, '.php')+3);
