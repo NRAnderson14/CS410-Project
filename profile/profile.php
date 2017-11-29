@@ -9,6 +9,7 @@
     $stmt = $db -> prepare('SELECT profile_img_url, fname, lname FROM tenants WHERE username = :user;');
     $stmt -> execute(['user' => $username]);
     $usr_info = $stmt -> fetch();
+	
 
     $rating_stmt = $db -> prepare('SELECT AVG(user_rating) AS rating FROM tenant_ratings WHERE username = :user;');
     $rating_stmt -> execute(['user' => $username]);
@@ -25,6 +26,7 @@
     }
 ?>
 	<script src=<?php print($path . "js/search.js") ?> ></script>
+	<script src="../js/news_feed.js"></script>
 
 <main>
 
@@ -45,10 +47,12 @@
 
                 <div class="informationBox">
                     <h1 id="userName"><?= $usr_info['fname'] . ' ' . $usr_info['lname'] ?></h1>
-
+					
                     <div class="profileRating">
                         <!-- <h2 class="yourRating">Your Rating</h2> -->
                     <?php
+					$fname = $usr_info['fname'];
+					$lname = $usr_info['lname'];
                     for($i = 1.0; $i <= 5.0; $i += 1.0) {
                         if($ratingval > $i || $ratingval == $i) {
                             //Whole star
@@ -181,9 +185,13 @@
 
 
         </div>
-            <div id="customFeed" class="column large-8">
-                <h3 id="customFeedTitle">News Feed</h3>
-            </div>
+		<div style="background: #FBFBFB; margin-top: 30px; padding-top: 20px;" class="column large-8">
+			<h3 style="text-align: center;">Post to Feed</h3>
+			<input style="width: 80%; margin: auto;" type="text" placeholder="What's on your mind, <?=$fname?>?">
+			<button id="post-button" style="height: 20px; background: #4266DA; color: white; padding: 10px 20px 23px 20px; border-radius: 3px; margin-right: 10%; margin-top: 10px; float: right;">Post</button>
+			<h3 style="text-align: center; margin-top: 10px; border-bottom: 1px solid #CACACA; padding-top: 20px;">News Feed</h3>
+			<div id="post-load"></div>
+        </div>
     </div>
 
     <div class="row">
@@ -357,7 +365,7 @@ function myAlert(){
 	document.getElementById("yuh").innerHTML = "You can pay " + total + " per month for an apartment";
 }
 </script>
-
+<label id="post-user" hidden><?=$username?></label>
 <?php
 	include '../footer.php';
 ?>
