@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href=<?php print($path . "css/foundation-icons.css") ?> >
 		<link rel="stylesheet" href=<?php print($path . "css/customstyles.css") ?> >
 		<link rel="stylesheet" href=<?php print($path . "css/logo.css") ?> >
-		<script src=<?php print($path . "js/vendor/jquery.js") ?> ></script>
+		<script src=<?php print($path . "js/vendor/jquery.js") ?> ></script> 
 		<script src=<?php print($path . "js/vendor/what-input.js") ?> ></script>
 		<script src=<?php print($path . "js/vendor/foundation.js") ?> ></script>
 		<script src=<?php print($path . "js/vendor/foundation.min.js") ?> ></script>
@@ -21,5 +21,4 @@
 	</head>
 	<?php
 		include 'nav.php';
-		echo("testing server commit");
 	?>
