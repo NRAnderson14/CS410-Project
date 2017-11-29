@@ -167,10 +167,10 @@ $numBathsSecond = 10;
 					<div class="card-section">
                         <?php
                         if ($user_has_rated) {
-                            print '<div class="row user-has-rated-stars">';
+                            print '<div id="rating-stars" class="row user-has-rated-stars">';
                             $star_color = "#f4d940";
                         } else {
-                            print '<div class="row stars">';
+                            print '<div id="rating-stars" class="row stars">';
                             $star_color = "";
                         }
 

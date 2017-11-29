@@ -122,18 +122,32 @@
     $user_has_rated_stmt -> execute(['pid' => $property_id, 'user' => $username]);
 
     $user_rated_results = $user_has_rated_stmt -> fetch();
+
+    $user_rated_landlord_stmt = $db -> prepare('SELECT rating_tenant, rating FROM landlord_ratings WHERE landlord = :landlord AND rating_tenant = :user;');
+    $user_rated_landlord_stmt -> execute(['landlord' => $landlord_username, 'user' => $username]);
+
+    $user_rated_landlord_results = $user_rated_landlord_stmt -> fetch();
     if ($user_rated_results['rating_tenant'] != null) {
         $user_has_rated = true;
         //If user has rated the property, use that instead of the average
         $property_rating_val = $user_rated_results['rating'];
-        $property_rating_val = $property_rating_val * 2.0;
-        $property_rating_val = round($property_rating_val);
-        $property_rating_val = $property_rating_val / 2.0;
+//        $property_rating_val = $property_rating_val * 2.0;
+//        $property_rating_val = round($property_rating_val);
+//        $property_rating_val = $property_rating_val / 2.0;
     } else {
         $user_has_rated = false;
     }
+
+    if ($user_rated_landlord_results['rating_tenant'] != null) {
+        $user_rated_landlord = true;
+        $ratingval = $user_rated_landlord_results['rating'];
+    } else {
+        $user_rated_landlord = false;
+    }
+
     } else {
         $user_has_rated = false;
+        $user_rated_landlord = false;
     }
 	?>
 
@@ -212,10 +226,10 @@
 
             <?php
             if ($user_has_rated) {
-                print '<div class="row user-has-rated-stars">';
+                print '<div class="row user-has-rated-stars rating-stars property-rating">';
                 $star_color = "#f4d940";
             } else {
-                print '<div class="row stars">';
+                print '<div class="row stars rating-stars property-rating">';
                 $star_color = "";
             }
 
@@ -273,20 +287,29 @@
 			<h5 style="text-align: center;"><?=$landlord?>'s Average Rating</h5>
 			<div style="text-align: center;">
 				<h1><?=$ratingval?></h1>
-            <?php
+                <?php
+                if ($user_has_rated) {
+                    print '<div class="row user-has-rated-stars rating-stars landlord-rating">';
+                    $star_color = "#f4d940";
+                } else {
+                    print '<div class="row stars rating-stars landlord-rating">';
+                    $star_color = "";
+                }
+
 				for($i = 1.0; $i <= 5.0; $i += 1.0) {
 				    if($ratingval > $i || $ratingval == $i) {
 				        //Whole star
-                        print '<span class="fa fa-star profileStar" aria-hidden="true"></span>';
+                        print '<span class="fa fa-star profileStar" aria-hidden="true" style="color: ' . $star_color . '"></span>';
                     } else if($ratingval > $i-1 && $ratingval < $i) {
 				        //Half star
-                        print '<span class="fa fa-star-half-o profileStar" aria-hidden="true"></span>';
+                        print '<span class="fa fa-star-half-o profileStar" aria-hidden="true" style="color: ' . $star_color . '"></span>';
                     } else {
 				        //Empty star
-                        print '<span class="fa fa-star-o profileStar" aria-hidden="true"></span>';
+                        print '<span class="fa fa-star-o profileStar" aria-hidden="true" style="color: ' . $star_color . '"></span>';
                     }
                 }
 			?>
+            </div>
 			</div>
 		</div>		
 		<br>
@@ -356,6 +379,7 @@
 	<script>
       $(document).foundation();
     </script>
+    <script src="<?= $path ?>js/rate_property.js"></script>
 
 	
 	
