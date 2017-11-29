@@ -187,7 +187,7 @@
         </div>
 		<div style="background: #FBFBFB; margin-top: 30px; padding-top: 20px;" class="column large-8">
 			<h3 style="text-align: center;">Post to Feed</h3>
-			<input style="width: 80%; margin: auto;" type="text" placeholder="What's on your mind, <?=$fname?>?">
+			<input id="post-text" style="width: 80%; margin: auto;" type="text" placeholder="What's on your mind, <?=$fname?>?">
 			<button id="post-button" style="height: 20px; background: #4266DA; color: white; padding: 10px 20px 23px 20px; border-radius: 3px; margin-right: 10%; margin-top: 10px; float: right;">Post</button>
 			<h3 style="text-align: center; margin-top: 10px; border-bottom: 1px solid #CACACA; padding-top: 20px;">News Feed</h3>
 			<div id="post-load"></div>
