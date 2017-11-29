@@ -1,5 +1,8 @@
 $(document).ready(function(){
 	$("#email-button").click(function(){
-		window.open('mailto:test@example.com');
+		if($("#name").val()=="" || $("#email").val()=="" || $("#reason").val()=="" || $("#message").val()==""){
+		}else{
+			window.open('mailto:test@example.com');
+		}
 	});
 });

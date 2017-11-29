@@ -342,19 +342,19 @@
 		</div>
 		<div class="small-6 columns" style="border-left: 1px solid black;">
 		<div style="padding: 10px; border: 1px solid #ddd; background: #eee; max-width: 400px; min-width: 300px; margin: auto; border-radius: 7px;">
-		<form action="#" method="post">
+
 		
 			<p>Contact Landlord: <?=$landlord?></p>
 			<p>Email: <?=$email?></p>
 			<p>Phone: <a href="tel:123-123-1234"><?=$phone?></a></p>
 			<label>Name:
-			<input type="text" name="name" placeholder="Name">
+			<input id="name" type="text" name="name" placeholder="Name">
 			</label>
 			<label>Email:
-			<input type="email" name="email" placeholder="something@something.com" required>
+			<input id="email" type="email" name="email" placeholder="something@something.com" required>
 			</label>
 			<label>Reason:
-			<select name="contact">
+			<select id="reason" name="contact">
 			<option value="none"></option>
 			<option value="Interested">Interested</option>
 			<option value="info">More Info.</option>
@@ -362,12 +362,12 @@
 			</select>
 			</label>
 			<label>Message:
-			<textarea name="message" rows="6" placeholder="I would like to know more about..."></textarea>
+			<textarea id="message" name="message" rows="6" placeholder="I would like to know more about..."></textarea>
 			</label>
 			<div style="text-align: center;">
 			<input id="email-button" type="submit" style="width: 100px;" class="button extended landlord-contact-button" value="Send">
 			</div>
-		</form>
+
 		</div>
 		</div>
 	</div>
@@ -381,7 +381,7 @@
     </script>
 
 	
-	
+	<script src="../js/send_email.js"></script>
 <?php
 	include $path."footer.php";
 ?>
