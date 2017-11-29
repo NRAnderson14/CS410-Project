@@ -1,6 +1,5 @@
 <?php
 	//session_destroy;
-	echo ("test");
 	if(!isset($_SESSION)){
 		session_start();
 	}
