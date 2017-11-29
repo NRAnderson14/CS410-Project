@@ -136,20 +136,80 @@
         $user_has_rated = false;
     }
 	?>
-	<div class="upperBackground"></div>
-	<div class="row text-center" id="profileHeader">
-		<div class="large-12 columns">
-			<div class="row column text-center">
-			<h1 class="white"><?=$address?></h1>
+
+<!-- SLIDESHOW -->
+<div id="slideshow">
+
+	<!-- <div class="row column text-center"> -->
+	
+		<!-- <div class="medium-12 large-12 columns"> -->
+
+			<div class="orbit" role="region" aria-label="pictures" data-orbit data-auto-play="false">
+
+				<div class="orbit-controls">
+				  <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+				  <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+				</div>
+
+				<ul class="orbit-container">
+
+					<?php
+						$count = $imgs_stmt -> rowCount();
+						$i = 1;
+
+						foreach($imgs as $image){
+					?>
+						<li class="is-active orbit-slide">
+							<img class="orbit-image slideshowImage" src="../<?= $image['image_url'] ?>" alt="picture<?=$i?>">
+						</li>
+					<?php
+							$i++;
+						}
+					?>
+				</ul>
+
+				<nav id="slideshowBullets" class="orbit-bullets">
+					<button class="is-active" data-slide="<?=$j?>"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+					<?php
+						for($j = 1; $j < $count; $j++){
+					?>		
+					<button data-slide="<?=$j?>"><span class="show-for-sr">Second slide details.</span></button>
+					<?php
+						}
+					?>
+				</nav>
+
+			</div>
 			
-		</div>
-			<div style="margin-top: 50px;" class="hide-for-large">
-				<a href=""><img src="<?= $path . $img ?>" alt="Profile Picture" id="profilePicture"></a>
-				
-			</div>
-			<div class="show-for-large">
-				<a href=""><img style="margin-top: -40px;" src="<?= $path . $img ?>" alt="Profile Picture" id="profilePicture"></a>
-			</div>
+		<!-- </div> -->
+	<!-- </div> -->
+</div>
+<!-- END SLIDESHOW -->
+
+<!-- HEADER? -->
+	<!-- <div class="upperBackground"></div> -->
+<div class="" id="propertyHeader">
+
+		<div class="large-12 columns">
+			
+				<h1 id="propertyTitle"><span class="fa fa-map-marker"> </span> <?=$address?> <?=$city?>, <?=$state?></h1>
+				<?php
+                    if ($is_available == 1) {
+                        print '<h5 id="propertyAvailable" class="landlord-editable value-outer-avail"><span class="avail">AVAILABLE</span> NOW!</h5>';
+                    } elseif ($is_available == 0) {
+                        print '<h5  id="propertyNotAvailable" class="landlord-editable value-outer-avail"><span class="avail">UNAVAILABLE</span> FOR RENT</h5>';
+                    }
+				?>
+			
+
+		<!-- <div style="margin-top: 50px;" class="hide-for-large">
+			<a href=""><img src="<?= $path . $img ?>" alt="Profile Picture" id="profilePicture"></a>	
+		</div> -->
+
+		<!-- <div class="show-for-large">
+			<a href=""><img style="margin-top: -40px;" src="<?= $path . $img ?>" alt="Profile Picture" id="profilePicture"></a>
+		</div> -->
+
             <?php
             if ($user_has_rated) {
                 print '<div class="row user-has-rated-stars">';
@@ -160,7 +220,7 @@
             }
 
             if ($property_rating_val == 0) {
-                print '<h4>No ratings yet for this property</h4>';
+                print '<h4 id="propertyRatingText">This property hasn\'t been rated</h4>';
             } else {
                 for ($i = 1.0; $i <= 5.0; $i += 1.0) {
                     if ($property_rating_val > $i || $property_rating_val == $i) {
@@ -176,66 +236,27 @@
                 }
             }
             ?>
-            </div>
-			<h6 id="userName">Current Landlord:</h6>
-			<h4 id="userName"><?= $landlord ?></h4>
-				<?php
-                    if ($is_available == 1) {
-                        print '<h5 style="color: green; font-weight: bold;" class="landlord-editable value-outer-avail"><span class="avail">AVAILABLE</span> FOR RENT</h5>';
-                    } elseif ($is_available == 0) {
-                        print '<h5 style="color: red; font-weight: bold;" class="landlord-editable value-outer-avail"><span class="avail">UNAVAILABLE</span> FOR RENT</h5>';
-                    }
-				?>
-		</div>
-	</div>
-	<div style="background: black; padding-top: 50px; margin-top: 10px;">
-	<div class="row column text-center">
-	
-		<div class="medium-12 large-12 columns">
-			<div class="orbit" role="region" aria-label="pictures" data-orbit data-auto-play="false">
-				<div class="orbit-controls">
-				  <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-				  <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-				</div>
-				<ul class="orbit-container">
-<?php
-	$count = $imgs_stmt -> rowCount();
-	$i = 1;
+        </div>
 
-	foreach($imgs as $image){
-?>
-					<li class="is-active orbit-slide">
-						<img class="orbit-image thumbnail propertyImages" src="../<?= $image['image_url'] ?>" alt="picture<?=$i?>">
-					</li>
-<?php
-        $i++;
-	}
-?>
-				</ul>
-				<nav class="orbit-bullets">
-				<button class="is-active" data-slide="<?=$j?>"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
-<?php
-	for($j = 1; $j < $count; $j++){
-?>		
-					<button data-slide="<?=$j?>"><span class="show-for-sr">Second slide details.</span></button>
-<?php
-	}
-?>
-				</nav>
-				</div>
-			</div>
-		</div>
+			<h6 id="currentLandlord">Current Landlord: <?= $landlord ?></h6>
+			
+				
 	</div>
+</div>
+<!-- END HEADER? -->
+
+
+<!-- PROPERTY INFO/ LANDOLORD CONTACT -->
 	<div style="margin-bottom: -60px;">
 	<div class="row column" style="text-align: center; margin-top: 20px;">
 		<div class="small-6 columns small-centered">
-		<p><i class="fa fa-map-marker logIcon"></i> <?=$address?> <?=$city?>, <?=$state?> <?=$zip?>, <?=$country?></p>
+		<a target="_blank" href="https://www.google.com/maps/place/<?=$address?>+<?=$city?>+<?=$state?>+<?=$zip?>+<?=$country?>"><i class="fa fa-map-marker logIcon"></i> <?=$address?> <?=$city?>, <?=$state?> <?=$zip?>, <?=$country?></a>
 		</div>
 		<hr>
 	</div>
 	<div class="row column" style="text-align: center; margin-top: 0px;">
 		<div class="small-4 columns">
-            <p class="landlord-editable value-outer-price"><i class="fa fa-money logIcon"></i> $<span class="price"><?=$price?></span></p>
+            <p class="landlord-editable value-outer-price"><span class="propertyPrice"><i class="fa fa-usd logIcon"></i> <?=$price?></span></p>
 		</div>
 		<div class="small-4 columns">
             <p class="landlord-editable value-outer-bed"><i class="fa fa-bed logIcon"></i> <span class="bed"><?=$bedNum?></span> <?=$bed?></p>
