@@ -136,7 +136,7 @@
                     $addresses -> execute(['name' => $username]);
                     foreach($addresses as $address) {
                 ?>
-                <li><a href="../properties/property.php?id=<?= $address['property_id'] ?>"><?php
+                <li><a href="../properties/property.php?id=<?= $address['property_id'] ?>"> <a target="_blank" href="https://www.google.com/maps/place/ <?=$address['address'] ?>"><span class="fa fa-map-marker"></span></a> <?php
 
                 $curr_address = $address['is_addr'] == 1 ? 'Current Address' : 'Previous Address';
                 print $address['address'] . " " . $address['apt'] . "</a> | " . $curr_address;
