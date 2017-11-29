@@ -41,10 +41,14 @@
 			print "username already taken";
 			print "<a href='../../login/index.php'>Create Profile</a>";
 		}else{
-			print "Thank you $fname, your profile has been created. <a href='../../index.php'>Log in here</a>";
+
+			
+
 			$users_insertion = $db -> prepare("INSERT INTO users (username, password, user_type, email) 
                                                          VALUES (:username, :password, :user_type, :email);");
 			$users_insertion -> execute(['username' => $username, 'password' => $password, 'user_type' => $membership_type, 'email' => $email]);
+
+			print "Thank you $fname, your profile has been created. <a href='../../login/index.php'>Log in here</a>";
 
 			if($membership_type == "landlord") {
 			    $landlord_insertion = $db -> prepare('INSERT INTO landlords (username, fname, lname)
