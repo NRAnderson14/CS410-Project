@@ -6,31 +6,87 @@
 	
 ?>
 <div class="nav">
-<div class="off-canvas-wrapper">
-	<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-		<div class="off-canvas position-left" id="my-info" data-off-canvas data-position="left">
-			<div class="row column">
-				<!--
-				Sidebar content
-				-->
-			</div>
-		</div>
-		<div class="off-canvas-content" data-sticky-container data-off-canvas-content>
-			<div class="title-bar sticky" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1">
-				<div class='title-bar-left' style='height: 40px;'>
-					<button id='#menu-icon' class='menu-icon ' style='position: fixed; z-index: 2;' type='button' data-open='my-info'></button>
-					<a class='main-logo hide-for-large' href='<?=$path?>'>Rent Sm<span class='fa fa-home'></span>rt</a>
-					<a class='show-for-large' style='margin-left: 50px;' href='<?=$path?>'>Rent Sm<span class='fa fa-home'></span>rt</a>
-				</div>
-				<div class='title-bar-right' style='margin-right: 20px; z-index: 2;'>
+
+	<div class="off-canvas-wrapper">
+		<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+			<!-- sidebar -->
+			<div class="off-canvas position-left" id="my-info" data-off-canvas data-position="left">
+				<div id="sideBar" class="row column">
 				
-					<?php
+				<?php
 					if(isset($_SESSION["is_auth"])){
 						$is_auth = $_SESSION["is_auth"];
 						//print "$is_auth";
-					}
+					} 
+
 					if(isset($_SESSION["username"])){
 						$username = $_SESSION["username"];
+
+						$username = $_SESSION["username"];
+						
+						$db = new PDO("mysql:dbname=rent_smart;host=localhost","root");
+						$stmt = $db -> prepare('SELECT profile_img_url, fname, lname FROM tenants WHERE username = :user;');
+						$stmt -> execute(['user' => $username]);
+						$usr_info = $stmt -> fetch();
+
+						$rating_stmt = $db -> prepare('SELECT AVG(user_rating) AS rating FROM tenant_ratings WHERE username = :user;');
+						$rating_stmt -> execute(['user' => $username]);
+						$rating = $rating_stmt -> fetch();
+						$ratingval = round($rating['rating'],1);
+					?>
+						
+						<!-- nav bar content-->
+						<p id="welcomeSB">DASHBOARD</p>
+						<h1 id="userNameSB"><?= $usr_info['fname'] . ' ' . $usr_info['lname'] ?></h1>
+
+						<hr>
+
+	
+						<h3  class="ratingTextSB"> Your Rating: <span id="ratingSB"> <?=$ratingval?> </span> </h3>
+						
+						
+						<a class="linkSB" href="<?=$path?>profile/profile.php"> Your Profile <span class="fa fa-user-o iconSB"></span> </a>
+					
+						<a class="linkSB" href="<?=$path?>index.php"> Link 2 <span class="fa fa-mobile iconSB"></span> </a>
+
+						<a class="linkSB" href="<?=$path?>index.php"> Link 3 <span class="fa fa-newspaper-o iconSB"></span> </a>
+
+						<a class="linkSB" href="<?=$path?>index.php"> Link 4 <span class="fa fa-hand-spock-o iconSB"></span> </a>
+
+					<?php } ?>
+				
+				</div>
+			</div>
+
+		<div class="off-canvas-content" data-sticky-container data-off-canvas-content>
+			<div class="title-bar sticky" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1">
+				
+				<div class='title-bar-left' style='height: 40px;'>
+
+					
+					<?php
+					
+
+					if(isset($_SESSION["username"])){
+						$username = $_SESSION["username"];
+					
+					?>
+
+						<!-- sidebar button-->
+						<button id='#menu-icon' class='menu-icon ' style='position: fixed; z-index: 2;' type='button' data-open='my-info'></button>
+					<?php } ?>
+
+					<a class='main-logo hide-for-large' href='<?=$path?>'>Rent Sm<span class='fa fa-home'></span>rt</a>
+					<a class='show-for-large' style='margin-left: 50px;' href='<?=$path?>'>Rent Sm<span class='fa fa-home'></span>rt</a>
+				</div>
+
+				<div class='title-bar-right' style='margin-right: 20px; z-index: 2;'>
+				
+					<?php
+					
+					if(isset($_SESSION["username"])){
+						// $username = $_SESSION["username"];
 						
 				
 						

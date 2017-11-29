@@ -538,6 +538,69 @@ main{
 	font-weight: 900;
 }
 
+/* navbar */
 
+#my-info {
+	background: rgb(32, 32, 32);
+	box-shadow: 0px 0px 0px 0px black;
+}
 
+.position-left.is-transition-push {
+	box-shadow: 0px 0px 0px 0px black;
+}
+.position-left.is-transition-push::after {
+	box-shadow: 0px 0px 0px 0px black;
+}
+#sideBar {
+	font-family: 'Roboto', sans-serif;
+}
+#userNameSB {
+	
+	color: rgb(226, 226, 226);
+	font-size: 35px;
+	font-weight: 200;
+}
+#welcomeSB {
+	margin-top: 30px;
+	margin-bottom: 0px;
+	color: var(--main_blue);
+}
+.linkSB {
+	background: rgba(190, 190, 190, 0.1);
+	color: rgb(226, 226, 226);
+	font-weight: 300;
+	display: block;
+	transition: 300ms;
+	padding: 5px;
+	padding-left: 10px;
+	margin: 5px 0px; 
+}
+.linkSB:hover {
+	color: var(--main_blue);
+	transform: scale(1.05,1.05);
+	transition: 300ms;
+}
+
+.linkSB:focus {
+	color: rgb(226, 226, 226);
+	outline: none;
+}
+
+.iconSB {
+	padding: 5px;
+	float: right;
+}
+#ratingSB {
+	color: var(--main_blue);
+	font-weight: 200;
+	font-size: 3.2em;
+	/* text-align: center; */
+}
+.ratingTextSB {
+	color: rgb(226, 226, 226);
+	font-size: 22px;
+	font-weight: 200;
+	
+	text-align: right;
+}
 
