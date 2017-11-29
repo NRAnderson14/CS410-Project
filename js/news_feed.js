@@ -8,7 +8,9 @@ $(document).ready(function(){
 			
 		}else{
 			$("#post-load").load("newsFeed.php", {"username":username, "value":value});
+
 		}
-		location.reload();
+		setTimeout(location.reload.bind(location), 50);
+		// location.reload();
 	});
 });
