@@ -29,9 +29,8 @@
 	</script>
 	<script src=<?php print($path . "js/notification.js") ?> ></script>
         <?php
-//            if (isset($user_has_rated))
             if (isset($_SESSION['username'])) {
-                print '<script src="<?= $path ?>js/rate_property.js"></script>';
+                print "<script src=\"{$path}js/rate_property.js\"></script>";
             }
             $currpath = $_SERVER['REQUEST_URI'];
 
